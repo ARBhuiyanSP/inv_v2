@@ -26,7 +26,7 @@
                 <table class="table table-borderless search-table">
                     <tbody>
                         <tr>  
-							<td>
+							<td style="width:20%">
                                 <div class="form-group">
 									<label for="sel1">Material Category:</label>
 									<select class="form-control select2" id="material_id" name="material_id">
@@ -48,19 +48,20 @@
 									</select>
 								</div>
                             </td>
-							<td>
+							<td style="width:20%">
                                 <div class="form-group">
                                     <label for="todate">To Date</label>
                                     <input type="text" class="form-control" id="to_date" name="to_date" value="<?php if(isset($_GET['to_date'])){ echo $_GET['to_date']; } ?>" autocomplete="off" required >
                                 </div>
                             </td>
 							
-							<td>
+							<td style="width:10%">
                                 <div class="form-group">
                                     <label for="todate">.</label>
 									<button type="submit" name="submit" class="form-control btn btn-primary">Search</button>
                                 </div>
                             </td>
+                            <td style="width:50%"></td>
                         </tr>
                     </tbody>
                 </table>
