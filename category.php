@@ -314,7 +314,7 @@ function generateTreeMenuHtmlCollapse($items) {
                     <div class="modal_body_centerize">
                         <div id="parent_material_edit_data_section"></div>
                     </div>
-                </div>
+                </div></br>
                 <div class="modal-footer modal_footer_custom_background">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-default" onclick="processParentItems('parent_item_edit_form_value')">Update</button>

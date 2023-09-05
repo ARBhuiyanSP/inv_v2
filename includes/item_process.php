@@ -8,6 +8,9 @@ if (isset($_GET['process_type']) && $_GET['process_type'] == 'parent') {
     $name = mysqli_real_escape_string($conn, $_POST['name']);
 
     $parent_id = mysqli_real_escape_string($conn, $_POST['parent_id']);
+    
+
+
     $_order = mysqli_real_escape_string($conn, $_POST['_order']);
 
     $parent_code = mysqli_real_escape_string($conn, $_POST['category_id']);
@@ -28,10 +31,29 @@ if (isset($_GET['process_type']) && $_GET['process_type'] == 'parent') {
         if (isset($_POST['parent_material_update_id']) && !empty($_POST['parent_material_update_id'])) {
             $edit_id = $_POST['parent_material_update_id'];
             $sql = "UPDATE inv_materialcategorysub SET category_id='$parent_code',category_description='$name',parent_id= '$parent_id',_order='$_order' WHERE id=$edit_id";
+
+            // Has child update
+    
+            $parent_id = mysqli_real_escape_string($conn, $_POST['parent_id']);
+            if($parent_id > '0' ){
+                $sqlChild = "UPDATE inv_materialcategorysub SET has_child=1 WHERE id=$parent_id";
+                $conn->query($sqlChild);
+            }
+            // Has child update
+
             $status     =   'success';
             $message    =   'Data have been successfully updated!';
         } else {
             $sql = "INSERT INTO inv_materialcategorysub (category_description, category_id,parent_id,_order) VALUES ('" . $name . "', '" . $parent_code . "','".$parent_id."','".$_order."')";
+
+                // Has child update
+    
+            $parent_id = mysqli_real_escape_string($conn, $_POST['parent_id']);
+            if($parent_id > '0' ){
+                $sqlChild = "UPDATE inv_materialcategorysub SET has_child=1 WHERE id=$parent_id";
+                $conn->query($sqlChild);
+            }
+            // Has child update
             $status     =   'success';
             $message    =   'Data have been successfully inserted!';
         }

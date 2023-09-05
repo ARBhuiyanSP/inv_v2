@@ -80,12 +80,13 @@ if(isset($_GET['submit'])){
 	//$category_ids_array[]=$material_id;
 
 	function findChildCategories($cateory_id,$to_date){
+
 		global $conn;
 		$sqlall	=	"SELECT * FROM inv_materialcategorysub WHERE `parent_id` = '$cateory_id' ";
 		$result = mysqli_query($conn, $sqlall);
 		while ($val = $result->fetch_assoc()) {
-			if($val["parent_id"] !=0){
-				fetch_category_wise_data($cateory_id,$to_date);
+			fetch_category_wise_data($val["id"],$to_date);
+			if($val["has_child"] ==1){
 				findChildCategories($val["id"],$to_date);
 			}
 		}
@@ -150,7 +151,9 @@ while ($val = $result->fetch_assoc()) {
 					</thead>
 					<tbody>
 					<?php
+					echo fetch_category_wise_data($material_id,$to_date);
 					echo findChildCategories($material_id,$to_date);
+					
 					 ?>
 					</tbody>
 				</table>

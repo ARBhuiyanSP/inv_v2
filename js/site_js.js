@@ -87,23 +87,29 @@ function processParentItems(form_id) {
             data: $("#" + form_id).serialize(),
             success: function(response) {
                 if (response.status == 'success') {
-                    $('#main_item_id').val('');
-                    $('#main_sub_item_id').val('');
-                    $('#item_code').val('');
-                    $('#item_name').val('');
-                    $('#qty_unit').val('');
-                    $('#material_min_stock').val('');
-                    $('#category_id').val('');
+                    //$('#parent_id').val('');
+                    //$('#category_id').val('');
                     $('#parent_name').val('');
                     $('#_order').val('');
+                    //$('#main_sub_item_id').val('');
+                   // $('#item_code').val('');
+                    //$('#item_name').val('');
+                    //$('#qty_unit').val('');
+                    //$('#material_min_stock').val('');
+                    console.log("form_id "+form_id)
                     if (form_id == 'parent_item_added_form_value') {
+                        swal("Success", response.message, "success");
                         $('#parent_item_added_form').modal('hide');
+                        location.reload();
                     } else if (form_id == 'parent_item_edit_form_value') {
+                        swal("Success", response.message, "success");
                         $('#parent_item_edit_form').modal('hide');
+                        location.reload();
+                        
                     }
                     $('#parent_category_body').html(response.data);
-                    $("#item_information").accordion({ active: 0 });
-                    swal("Success", response.message, "success");
+                    //$("#item_information").accordion({ active: 0 });
+                    
                 } else {
                     swal("Failed", response.message, "error");
                 }
@@ -342,7 +348,7 @@ function processItems(form_id) {
                     } else if (form_id == 'item_updated_form_value') {
                         $('#item_edit_form').modal('hide');
                     }
-                    //location.reload();
+                    location.reload();
                     $('#item_category_body').empty();
                     $('#item_category_body').html(response.data);
                     $("#item_information").accordion({ active: 4 });
