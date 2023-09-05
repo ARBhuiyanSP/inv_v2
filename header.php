@@ -74,6 +74,9 @@ include 'includes/user_process.php';
 	font-size:10px;
 	font-weight:bold;
 }
+.table th, .table td {
+  padding:3px !important;
+}
 </style>
 <body id="page-top">
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">

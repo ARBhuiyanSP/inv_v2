@@ -76,33 +76,35 @@ $category_resize_data =[];
 $data =  buildTreeCateogy($category_resize_data);
 
 
- function fetch_category_wise_data($cateory_id,$to_date){
+function fetch_category_wise_data($cateory_id,$to_date){
  	global $conn;
  	$sql2=" SELECT t1.mb_date,t2.material_id,t1.mb_materialid,t2.material_description,t2.spec,t2.part_no,t2.qty_unit, t3.unit_name,SUM(t1.mbin_qty-t1.mbout_qty) as qty_balance,t1.mb_materialid FROM `inv_materialbalance` AS t1
 			INNER JOIN inv_material AS t2 ON t1.mb_materialid=t2.material_id_code
 			INNER JOIN inv_item_unit AS t3 ON t3.id=t2.qty_unit
 			WHERE 1=1 AND t2.material_id=$cateory_id AND t1.mb_date <= '$to_date'   GROUP BY t1.mb_materialid ";
-$result = mysqli_query($conn, $sql2);
-$group_sub_total=0;
-while ($val = $result->fetch_assoc()) {
-	$group_sub_total +=$val['qty_balance'];
-	 
-	$GLOBALS["grand_total"]+=$val['qty_balance'];
-	echo  "<tr>
-			<td colspan='2'>".$val['material_description']."</td>
-			<td>".$val['part_no']."</td>
-			<td>".$val['spec']."</td>
-			<td>".$val['unit_name']."</td>
-			<td>".$val['qty_balance']."</td>
-		</tr>";
-}
-if($group_sub_total > 0){
-echo  "<tr><td colspan='5'><b>Sub Total</b></td>
-			<td><b>".$group_sub_total."</b></td></tr>";
-}
+	$result = mysqli_query($conn, $sql2);
+	$group_sub_total=0;
+	while ($val = $result->fetch_assoc()) {
+		$group_sub_total +=$val['qty_balance'];
+		$GLOBALS["grand_total"]+=$val['qty_balance'];
+		echo  "<tr>
+				<td colspan='2'>".$val['material_description']."</td>
+				<td>".$val['part_no']."</td>
+				<td>".$val['spec']."</td>
+				<td>".$val['unit_name']."</td>
+				<td>".$val['qty_balance']."</td>
+			</tr>";
+		}
+		$rowcount=mysqli_num_rows($result);
+		if($rowcount < 1) { 
+			echo "<tr><td colspan='6'><center>No Data Found</center></td></tr>";
+			} 
 
-
- }			
+		if($group_sub_total > 0){
+		echo  "<tr><td colspan='5'><b style='float:right'>Sub Total</b></td>
+					<td><b>".$group_sub_total."</b></td></tr>";
+		}
+ 	}			
 					  
 
 ?>
@@ -138,15 +140,10 @@ echo  "<tr><td colspan='5'><b>Sub Total</b></td>
                                     
                                     generateOptions($data,$indent = 0,$to_date);
                                     ?>
-					
-					
-					
-					
-						 
 					</tbody>
 					<tfoot>
 						<tr>
-							<th colspan="5">GRAND TOTAL</th>
+							<th colspan="5"><b style='float:right'>GRAND TOTAL</b></th>
 							<th><?php echo $grand_total; ?></th>
 						</tr>
 					</tfoot>
