@@ -58,14 +58,7 @@
             <span>Master Setup</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <?php
             
-                if(check_permission('material-list')){ ?>
-                    <a class="dropdown-item" href="material.php">
-                <i class="fa fa-bullseye" aria-hidden="true" style="color: #007BFF;"></i>
-                <span class="sub_menu_text_design"> Material</span>
-            </a>
-             <?php    } ?>
 
 
             <?php if(check_permission('category-list')){ ?>
@@ -75,6 +68,16 @@
             </a>
              <?php    } ?>
             
+			
+			<?php
+            
+                if(check_permission('material-list')){ ?>
+                    <a class="dropdown-item" href="material.php">
+                <i class="fa fa-bullseye" aria-hidden="true" style="color: #007BFF;"></i>
+                <span class="sub_menu_text_design"> Material</span>
+            </a>
+             <?php    } ?>
+			 
              <?php
             
                 if(check_permission('unit-list')){ ?>

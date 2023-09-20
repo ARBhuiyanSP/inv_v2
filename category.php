@@ -1,16 +1,14 @@
 <?php include 'header.php' ?>
 
 <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-<style>
+
+<style type="text/css">
 .ui-widget-content {
 	max-height: 500px; 
 
 }
-</style>
 
-
-<style type="text/css">
-  .tree li {
+.tree li {
         list-style-type: none;
     margin: 0;
     padding: 1px 2px 0 2px;
@@ -177,11 +175,10 @@ function generateTreeMenuHtmlCollapse($items) {
             Material category <a class="btn btn-sm btn-info" href="category.php">Refresh</a></div>
         <div class="card-body">
             <div class="div-center">
-              
                     <div class='row'>
                         <div class='col-md-12'>
                             <div class="table-responsive data-table-wrapper">
-                                <table id="example1" class="table table-condensed table-hover table-bordered site_custome_table">
+                                <table id="example2" class="table table-condensed table-hover table-bordered site_custome_table">
                                     <thead>
                                         <tr>
                                             <th>Code</th>
@@ -221,14 +218,10 @@ function generateTreeMenuHtmlCollapse($items) {
                                 </table>
                             </div><!--table-responsive-->
                         </div>
-                        
                     </div>
-                    
-                    
-                
+                </div>
             </div>
         </div>
-    </div>
    </div>
  </div>
     <!-- DataTables Example -->
