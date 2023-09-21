@@ -1955,22 +1955,37 @@ function get_product_with_category($graterThanZero=0)
     return $final_array;
 }
 
-function isDuplicateData($table, $where, $notWhere = '')
-{
+function isDuplicateData($table, $where, $notWhere=''){
     global $conn;
-    $sql = '';
-    $sql .= "SELECT * FROM $table where $where ";
-    if (isset($notWhere) && !empty($notWhere)) {
-        $sql .= " And $notWhere";
+    $sql='';
+    $sql.="SELECT * FROM $table where $where ";
+    if(isset($notWhere) && !empty($notWhere)){
+        $sql.=" And $notWhere";
     }
-    /* echo $sql;
-	exit; */
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
-        return true;
+        $lastRows   = $result->fetch_object();
+        return $lastRows->id;
     }
     return false;
 }
+
+// function isDuplicateData($table, $where, $notWhere = '')
+// {
+//     global $conn;
+//     $sql = '';
+//     $sql .= "SELECT * FROM $table where $where ";
+//     if (isset($notWhere) && !empty($notWhere)) {
+//         $sql .= " And $notWhere";
+//     }
+//     /* echo $sql;
+// 	exit; */
+//     $result = $conn->query($sql);
+//     if ($result->num_rows > 0) {
+//         return true;
+//     }
+//     return false;
+// }
 
 function stockReportCheck()
 {

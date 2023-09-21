@@ -12,17 +12,19 @@ include 'header.php';
         <li class="breadcrumb-item">
             <a href="dashboard.php">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active"> RLP Approval Chain Update</li>
+        <li class="breadcrumb-item active"> RLP Approval Chain Create</li>
     </ol>
     <!-- DataTables Example -->
     <div class="card mb-3">
         <div class="card-header">
-            <i class="fas fa-table"></i> RLP Approval Chain Update
-			<a href="rlp_approve_chain_list.php" style="float:right"><i class="fas fa-list"></i> List<a>
-		</div>
+            <i class="fas fa-table"></i> RLP Approval Chain Create
+            <a href="rlp_approve_chain_list.php" style="float:right"><i class="fas fa-list"></i> List<a>
+        </div>
         <div class="card-body">
-                        <?php include 'partial/rlp_approve_chain_update.php'; ?>
-                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <?php include 'partial/rlp_approve_chain_create.php' ?>
+                </div>
     </div>
 
 </div>

@@ -241,7 +241,8 @@ function generateTreeMenuHtmlCollapse($items) {
                             <label class="control-label col-sm-5" for="category_id">Category:</label>
                             <div class="col-sm-7">
                                 <select id="parent_id" class="form-control "
-                                  name="parent_id"  onchange="getMainCategoryCode(this.value,'category_id');" >
+                                  name="parent_id"  onchange="getMainCategoryCode(this.value,'category_id');" required >
+                                  <option value="">Select</option>
                                   <option value="0">Parent Category</option>
                                     <?php
                                     $html = '';

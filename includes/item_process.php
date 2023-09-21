@@ -809,7 +809,7 @@ if(isset($_GET['process_type']) && $_GET['process_type'] == 'parent_material_edi
             <label class="control-label col-sm-5" for="parent_id">Category:</label>
             <div class="col-sm-7">
                 <select id="parent_id" class="form-control "
-                      name="parent_id" >
+                      name="parent_id" required >
                     <option value="0">Parent Category</option>
                         <?php
                         $category_resize_data = category_tree();

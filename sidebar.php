@@ -114,6 +114,36 @@
                 <span class="sub_menu_text_design"> Euipments</span>
             </a>
              <?php    } ?>
+			 
+			 
+			   <?php
+            
+                if(check_permission('role-list')){ ?>
+                    <a class="dropdown-item" href="role-list.php">
+                <i class="fa fa-bullseye" aria-hidden="true" style="color: #007BFF;"></i>
+                <span class="sub_menu_text_design"> Role</span>
+            </a>
+             <?php    } ?>
+			 
+			 
+            <?php
+            
+                if(check_permission('role-list')){ ?>
+                    <a class="dropdown-item" href="rlp_approve_chain_list.php">
+                <i class="fa fa-bullseye" aria-hidden="true" style="color: #007BFF;"></i>
+                <span class="sub_menu_text_design"> RLP Approval Chain</span>
+            </a>
+             <?php    } ?>
+			 
+			  
+            <?php
+            
+                if(check_permission('role-list')){ ?>
+                    <a class="dropdown-item" href="notesheet_approve_chain_list.php">
+                <i class="fa fa-bullseye" aria-hidden="true" style="color: #007BFF;"></i>
+                <span class="sub_menu_text_design"> Notesheet Approval Chain</span>
+            </a>
+             <?php    } ?>
 
             
          
@@ -123,13 +153,9 @@
         </div>
     </li>
 
-     <?php if(check_permission('role-list')){ ?>
-        <li class="nav-item">
-            <a class="nav-link" href="role-list.php">
-                <i class="fa fa-id-badge" aria-hidden="true" style="color: #007BFF;"></i>
-                <span>Role</span></a>
-        </li>
-    <?php } ?>
+
+	
+
 
     <?php if(check_permission('user-list')){ ?>
         <li class="nav-item">

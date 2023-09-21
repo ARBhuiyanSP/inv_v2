@@ -8,7 +8,7 @@ include 'helper/utilities.php';
 include 'includes/item_process.php';
 include 'includes/receive_process.php';
 include 'includes/transfer_process.php';
-include 'includes/rlp_process.php';
+//include 'includes/rlp_process.php';
 include 'includes/issue_process.php';
 include 'includes/search_process.php';
 include 'includes/warehouse_search_process.php';
@@ -22,7 +22,8 @@ include 'includes/format_process.php';
 include 'includes/return_process.php';
 include 'includes/payment_process.php';
 include 'includes/equipment_process.php';
-include 'includes/role_process.php';
+include 'function/rlp_process.php';
+include 'function/rlp_chain_process.php';
 include 'includes/user_process.php';
 ?>
 <!DOCTYPE html>
