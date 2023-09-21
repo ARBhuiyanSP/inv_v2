@@ -1,28 +1,29 @@
-<?php include 'header.php' ?>
+<?php 
+include 'header.php';
+?>
+<?php if(!check_permission('user-list')){ 
+        include("404.php");
+        exit();
+ } ?>
+<!-- Left Sidebar End -->
 <div class="container-fluid">
     <!-- Breadcrumbs-->
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
-            <a href="rlp_entry.php">Material Requisiton [RLP]</a>
+            <a href="dashboard.php">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active">List</li>
+        <li class="breadcrumb-item active"> RLP List</li>
     </ol>
-    <!-- receive search start here -->
-    <?php include 'search/material_rlp_search.php'; ?>
-    <!-- end receive search -->
-    
+    <!-- DataTables Example -->
     <div class="card mb-3">
         <div class="card-header">
-            <i class="fas fa-table"></i>
-            RLP List
+            <i class="fas fa-table"></i> RLP List
+            <a href="rlp_create.php" style="float:right"><i class="fas fa-plus"></i> Create New<a>
         </div>
-        <div class="card-body" id="material_rlp_list_body">
-            <!--here your code will go-->
-            <div class="alert alert-success">
-                Search result will be shown here..
-            </div>
-			
-        </div>
+        <div class="card-body">
+                        <?php include 'partial/rlp_list.php'; ?>
+                        <?php //include 'partial/rlp_list2.php'; ?>
+                     </div>
     </div>
 
 </div>

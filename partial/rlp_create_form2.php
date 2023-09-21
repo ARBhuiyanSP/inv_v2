@@ -1,6 +1,7 @@
 <?php
     $currentUserId  =   $_SESSION['logged']['user_id'];
-    if(!empty($_SESSION['logged']['branch_id']) && !empty($_SESSION['logged']['department_id'])){
+    // if(!empty($_SESSION['logged']['branch_id']) && !empty($_SESSION['logged']['department_id']))
+    if(!empty($_SESSION['logged']['branch_id'])){
 ?>
 <script type="text/javascript">
         $(document).ready(function(){
@@ -72,7 +73,7 @@
 					$table = "branch";
 					$order = "ASC";
 					$column = "name";
-					$datas = getTableDataByTableName($table, $order, $column);
+					$datas = getTableDataByTableNameRLP($table, $order, $column);
 					foreach ($datas as $data) {
 						?>
 						<option value="<?php echo $data->id; ?>"><?php echo $data->name; ?></option>
@@ -121,23 +122,10 @@ if(isset($_POST['getchain'])){
 		<div class="col-sm-4">
 			<div class="form-group">
 				<label for="sel1">Project:</label>
-				<?php if (is_super_admin($user_id_session)) { ?>
-				<select class="form-control" id="project_id" name="request_project">
-					<option value="">Please select</option>
-					<?php
-					$table = "projects";
-					$order = "ASC";
-					$column = "project_name";
-					$datas = getTableDataByTableName($table, $order, $column);
-					foreach ($datas as $data) {
-						?>
-						<option value="<?php echo $data->id; ?>"><?php echo $data->project_name; ?></option>
-					<?php } ?>
-				</select>
-				<?php } else{?>
+				
 				 <input type="text" class="form-control" value="<?php echo getProjectNameById($_SESSION['logged']['project_id']); ?>" readonly />
 				 <input name="request_project" type="hidden" value="<?php echo $_SESSION['logged']['project_id']; ?>" />
-				 <?php } ?>
+				 
 			</div>
 		</div>
 	</div>
@@ -208,7 +196,7 @@ if(isset($_POST['getchain'])){
             </div>
         </div>
         <div class="col-sm-4">
-            <div class="form-group">
+            <div class="form-group" style="background-color:green;color:#fff;padding:2px;">
                 <label for="exampleId">RLP No</label>
                 <?php
 				

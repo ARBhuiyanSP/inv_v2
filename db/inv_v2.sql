@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 04, 2023 at 12:58 PM
+-- Generation Time: Sep 21, 2023 at 01:04 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -20,6 +20,41 @@ SET time_zone = "+00:00";
 --
 -- Database: `inv_v2`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `branch`
+--
+
+CREATE TABLE `branch` (
+  `id` int(11) NOT NULL,
+  `company_id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `short_name` varchar(15) NOT NULL,
+  `division_address` varchar(5000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `branch`
+--
+
+INSERT INTO `branch` (`id`, `company_id`, `name`, `short_name`, `division_address`) VALUES
+(1, 8, 'E-Engineering', '', ''),
+(2, 0, 'PEAM', '', ''),
+(3, 11, 'Maxon Power', '', ''),
+(4, 11, 'Generator Sales', '', ''),
+(5, 7, 'Corporate', '', ''),
+(6, 7, 'Battery', '', ''),
+(7, 10, 'Renewable Energy', '', ''),
+(8, 11, 'Sub Station', '', ''),
+(9, 8, 'Equipment', '', ''),
+(10, 11, 'Spare Parts', '', ''),
+(11, 0, 'Service And Energy Business', '', ''),
+(12, 0, 'SPOT', '', ''),
+(13, 0, 'CTED-Dhaka', '', ''),
+(14, 0, 'CTED-CTG', '', ''),
+(16, 19, '88 Innovations Engineering Ltd', '88i', 'Khawaja Tower, 7th Floor,95\r\nBir Uttam A. K. Khandokar Road,Mohakhali C/A, Dhaka - 1212');
 
 -- --------------------------------------------------------
 
@@ -51,6 +86,34 @@ CREATE TABLE `chart_data_column` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `companies`
+--
+
+CREATE TABLE `companies` (
+  `id` int(11) NOT NULL,
+  `company_name` varchar(255) NOT NULL,
+  `company_address` varchar(5000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `companies`
+--
+
+INSERT INTO `companies` (`id`, `company_name`, `company_address`) VALUES
+(7, 'Saif Powertec Ltd.', '95, Mohakhali'),
+(8, 'E-Engineering Ltd.', ''),
+(9, 'Saif Port Holdings Ltd.', ''),
+(10, 'Saif Electrical Manufacturing Ltd.', ''),
+(11, 'Maxon Power Ltd.', ''),
+(12, 'Saif Plastic & Polymer Industries Ltd.', ''),
+(14, 'Blueline Communications Ltd.', ''),
+(15, 'Saif Sporting Club Ltd.', ''),
+(16, 'Grihayan Ltd.', ''),
+(19, '88 Innovations Engineering Ltd', 'Khawaja Tower, 7th Floor,95\r\nBir Uttam A. K. Khandokar Road,Mohakhali C/A, Dhaka - 1212');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `complain_type`
 --
 
@@ -74,6 +137,409 @@ CREATE TABLE `country` (
   `numcode` smallint(6) DEFAULT NULL,
   `phonecode` int(5) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `department`
+--
+
+CREATE TABLE `department` (
+  `id` int(11) NOT NULL,
+  `company_id` int(11) NOT NULL,
+  `branch_id` int(11) DEFAULT NULL,
+  `branch_name` varchar(350) NOT NULL COMMENT 'temprary purpose',
+  `name` varchar(650) NOT NULL,
+  `short_name` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `department`
+--
+
+INSERT INTO `department` (`id`, `company_id`, `branch_id`, `branch_name`, `name`, `short_name`) VALUES
+(1, 8, 1, 'E-Engineering', 'Management', 'MAN'),
+(2, 8, 1, 'E-Engineering', 'Market Development', ''),
+(3, 0, 1, 'E-Engineering', 'Finance And Accounts', ''),
+(4, 0, 1, 'E-Engineering', 'Administration', ''),
+(5, 0, 1, 'E-Engineering', 'Dredging', ''),
+(6, 0, 1, 'E-Engineering', 'Engineering', ''),
+(7, 0, 1, 'E-Engineering', 'Project ENG', ''),
+(8, 0, 1, 'E-Engineering', 'Operation', ''),
+(9, 0, 1, 'E-Engineering', 'Maintenance', ''),
+(10, 0, 1, 'E-Engineering', 'QMS', ''),
+(11, 0, 1, 'E-Engineering', 'Mechanical', ''),
+(12, 0, 1, 'E-Engineering', 'Civil', ''),
+(13, 0, 1, 'E-Engineering', 'Commercial', ''),
+(14, 0, 1, 'E-Engineering', 'Store', ''),
+(15, 0, 2, 'PEAM', 'Engineering', ''),
+(16, 0, 2, 'PEAM', 'Civil', ''),
+(17, 0, 3, 'Maxon Power', 'Management', ''),
+(18, 0, 3, 'Maxon Power', 'Administration', ''),
+(19, 0, 3, 'Maxon Power', 'Project', ''),
+(20, 0, 3, 'Maxon Power', 'Finance And Accounts', ''),
+(21, 0, 4, 'Generator Sales', 'Sales And Marketing', ''),
+(22, 0, 4, 'Generator Sales', 'Service', ''),
+(23, 0, 4, 'Generator Sales', 'Project', ''),
+(24, 0, 4, 'Generator Sales', 'Administration', ''),
+(25, 0, 4, 'Generator Sales', 'Finance And Accounts', ''),
+(26, 0, 5, 'Corporate', 'Management', ''),
+(27, 0, 5, 'Corporate', 'Finance And Accounts', ''),
+(28, 0, 5, 'Corporate', 'QMS', ''),
+(29, 0, 5, 'Corporate', 'Human Resource Management', ''),
+(30, 0, 5, 'Corporate', 'Purchase And Procurement', ''),
+(31, 0, 5, 'Corporate', 'Legal', ''),
+(32, 0, 5, 'Corporate', 'Administration', ''),
+(33, 0, 5, 'Corporate', 'IT', ''),
+(34, 0, 5, 'Corporate', 'Commercial', ''),
+(35, 0, 5, 'Corporate', 'Project', ''),
+(36, 0, 5, 'Corporate', 'Business Development', ''),
+(37, 0, 5, 'Corporate', 'Brand Communication', ''),
+(38, 0, 5, 'Corporate', 'Share Market', ''),
+(39, 0, 5, 'Corporate', 'Enterprise Resource Planning', ''),
+(40, 0, 5, 'Corporate', 'Operation', ''),
+(41, 0, 5, 'Corporate', 'Service And WSS', ''),
+(42, 0, 6, 'Battery', 'Management', ''),
+(43, 0, 6, 'Battery', 'Commercial', ''),
+(44, 0, 6, 'Battery', 'Project Development And Implemantaion', ''),
+(45, 0, 6, 'Battery', 'RAndD', ''),
+(46, 0, 6, 'Battery', 'Factory Operation', ''),
+(47, 0, 6, 'Battery', 'Administration', ''),
+(48, 0, 6, 'Battery', 'Finance And Accounts', ''),
+(49, 0, 6, 'Battery', 'Plate Preparation', ''),
+(50, 0, 6, 'Battery', 'Charging', ''),
+(51, 0, 6, 'Battery', 'Quality Assurance', ''),
+(52, 0, 6, 'Battery', 'Maintenance', ''),
+(53, 0, 6, 'Battery', 'Warehouse And Logistics', ''),
+(54, 0, 6, 'Battery', 'Assembly', ''),
+(55, 0, 6, 'Battery', 'CMP', ''),
+(56, 0, 6, 'Battery', 'Service And WSS', ''),
+(57, 0, 6, 'Battery', 'QMS', ''),
+(58, 0, 6, 'Battery', 'Sales And Marketing', ''),
+(59, 0, 6, 'Battery', 'IT', ''),
+(60, 0, 6, 'Battery', 'Marketing And Sales- Export And Corporate', ''),
+(61, 0, 6, 'Battery', 'MC', ''),
+(62, 0, 6, 'Battery', 'Sales Operation', ''),
+(63, 0, 6, 'Battery', 'Planning And Coordination', ''),
+(64, 0, 6, 'Battery', 'Store', ''),
+(65, 0, 6, 'Battery', 'Gel And VRLA', ''),
+(66, 0, 6, 'Battery', 'Purchase And Procurement', ''),
+(67, 0, 7, 'Renewable Energy', 'Management', ''),
+(68, 0, 7, 'Renewable Energy', 'Operation', ''),
+(69, 0, 7, 'Renewable Energy', 'Finance And Accounts', ''),
+(70, 0, 7, 'Renewable Energy', 'Administration', ''),
+(71, 0, 7, 'Renewable Energy', 'Service And Maintanance', ''),
+(72, 0, 7, 'Renewable Energy', 'Sales And Marketing', ''),
+(73, 0, 7, 'Renewable Energy', 'Store', ''),
+(74, 0, 8, 'Sub Station', 'Project', ''),
+(75, 0, 8, 'Sub Station', 'Switch Gear', ''),
+(76, 0, 8, 'Sub Station', 'Operation', ''),
+(77, 0, 8, 'Sub Station', 'Administration', ''),
+(78, 0, 9, 'Equipment', 'Sales And Marketing', ''),
+(79, 0, 10, 'Spare Parts', 'Service', ''),
+(80, 0, 11, 'Service And Energy Business', 'Finance And Accounts', ''),
+(81, 0, 11, 'Service And Energy Business', 'Service', ''),
+(82, 0, 11, 'Service And Energy Business', 'Operation', ''),
+(83, 0, 11, 'Service And Energy Business', 'Sales And Marketing', ''),
+(84, 0, 11, 'Service And Energy Business', 'Administration', ''),
+(85, 0, 11, 'Service And Energy Business', 'Pre Sales', ''),
+(86, 0, 11, 'Service And Energy Business', 'Maintenance', ''),
+(87, 0, 11, 'Service And Energy Business', 'Group Customer Care', ''),
+(88, 0, 11, 'Service And Energy Business', 'Marine', ''),
+(89, 0, 12, 'SPOT', 'Documentation', ''),
+(90, 0, 12, 'SPOT', 'Billing', ''),
+(91, 0, 12, 'SPOT', 'Operation', ''),
+(92, 0, 12, 'SPOT', 'Administration', ''),
+(93, 0, 12, 'SPOT', 'Store', ''),
+(94, 0, 12, 'SPOT', 'Finance And Accounts', ''),
+(95, 0, 12, 'SPOT', 'Purchase And Procurement', ''),
+(96, 0, 12, 'SPOT', 'CTMS', ''),
+(97, 0, 12, 'SPOT', 'SC', ''),
+(98, 0, 12, 'SPOT', 'Ship Planning', ''),
+(99, 0, 12, 'SPOT', 'Terminal Operation', ''),
+(100, 0, 12, 'SPOT', 'RMG', ''),
+(101, 0, 12, 'SPOT', 'RTG', ''),
+(102, 0, 12, 'SPOT', 'Winch', ''),
+(103, 0, 12, 'SPOT', 'CCT Yard', ''),
+(104, 0, 12, 'SPOT', 'Strategic Planning And Terminal Operation', ''),
+(105, 0, 12, 'SPOT', 'NCT Yard', ''),
+(106, 0, 12, 'SPOT', 'CFS', ''),
+(107, 0, 12, 'SPOT', 'FLT', ''),
+(108, 0, 12, 'SPOT', 'Yard Planning And Documentation', ''),
+(109, 0, 12, 'SPOT', 'CCT Lasher', ''),
+(110, 0, 12, 'SPOT', 'ITV', ''),
+(111, 0, 12, 'SPOT', 'QGC', ''),
+(112, 0, 12, 'SPOT', 'Quay Yard Supervisor', ''),
+(113, 0, 12, 'SPOT', 'Delivery', ''),
+(114, 0, 12, 'SPOT', 'NCT Lasher', ''),
+(115, 0, 13, 'CTED-Dhaka', 'Operation', ''),
+(116, 0, 13, 'CTED-Dhaka', 'Service', ''),
+(117, 0, 13, 'CTED-Dhaka', 'Maintenance', ''),
+(118, 0, 13, 'CTED-Dhaka', 'Administration', ''),
+(119, 0, 14, 'CTED-CTG', 'Maintenance', ''),
+(120, 0, 14, 'CTED-CTG', 'QGC and RTG', ''),
+(121, 0, 14, 'CTED-CTG', 'PM and FLT', ''),
+(122, 0, 14, 'CTED-CTG', 'Purchase And Procurement', ''),
+(123, 0, 14, 'CTED-CTG', 'Store', ''),
+(124, 0, 14, 'CTED-CTG', 'Administration', ''),
+(125, 0, 14, 'CTED-CTG', 'QGC Maintanence', ''),
+(129, 19, 16, '', 'Hardware', 'HARD'),
+(130, 19, 16, '', 'Software', ''),
+(131, 19, 16, '', 'Management', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `designations`
+--
+
+CREATE TABLE `designations` (
+  `id` int(11) NOT NULL,
+  `name` varchar(650) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `designations`
+--
+
+INSERT INTO `designations` (`id`, `name`) VALUES
+(1, 'Executive'),
+(2, 'Manager'),
+(3, 'Senior Brand Promoter'),
+(4, 'Video Editor'),
+(5, 'Photographer'),
+(6, 'Brand Promoter'),
+(7, 'Graphic Designer'),
+(8, 'Assistant Manager'),
+(9, 'Driver'),
+(10, 'Office Assistant'),
+(11, '3D Modeler'),
+(12, 'Senior Online Video Editor'),
+(13, 'Senior Graphic Designer'),
+(14, 'Officer'),
+(15, 'Chief Executive Officer'),
+(16, 'Deputy General Manager'),
+(17, 'Senior Officer'),
+(18, 'Project Manager'),
+(19, 'Dredging Master'),
+(20, 'Project Co-Ordinator'),
+(21, 'General Manager'),
+(22, 'Electrician'),
+(23, 'Assistant Engine Driver'),
+(24, 'Engine Driver'),
+(25, 'Work Boat Master'),
+(26, 'Crew'),
+(27, 'Lever Man'),
+(28, 'Head Cook'),
+(29, 'Director'),
+(30, 'Assistant General Manager'),
+(31, 'Supervisor'),
+(32, 'Senior Technician'),
+(33, 'Peon'),
+(34, 'Assistant Cook'),
+(35, 'Assistant'),
+(36, 'Engineer'),
+(37, 'Surveyor'),
+(38, 'Operator'),
+(39, 'Site Engineer'),
+(40, 'Site Supervisor'),
+(41, 'Ship Supervisor'),
+(42, 'Deputy Manager'),
+(43, 'Mechanic'),
+(44, 'Assistant Site Supervisor'),
+(45, 'Technician'),
+(46, 'Pipe Fitter'),
+(47, 'Sukani'),
+(48, 'WINCH Operator'),
+(49, 'Excavator Operator'),
+(50, 'Senior Electrician'),
+(51, 'Loskor'),
+(52, 'Welder'),
+(53, 'Storeman'),
+(54, 'Assistant Engine Mechanic'),
+(55, 'Chief Operating Officer'),
+(56, 'Assistant Site Engineer'),
+(57, 'Lab Techinacian'),
+(58, 'Assistant Hydraulic Mechanic'),
+(59, 'Assistant Supervisor'),
+(60, 'Assistant Engineer'),
+(61, 'Site Assistant'),
+(62, 'Admin Assistant'),
+(63, 'Bulldozer Operator'),
+(64, 'Work Boat Engine Driver'),
+(65, 'Batching Plant Operator'),
+(66, 'Project Engineer'),
+(67, 'Deputy Project Manager'),
+(68, 'Wheel Loader Operator'),
+(69, 'Cook Helper'),
+(70, 'Dump Truck Driver'),
+(71, 'Mixer Truck Driver'),
+(72, 'Prime Mover Driver'),
+(73, 'Harbour Crane Operator'),
+(74, 'Helper'),
+(75, 'Batching Plant Helper'),
+(76, 'Crane Operator'),
+(77, 'Dozzer Operator'),
+(78, 'Concrete Pump Operator'),
+(79, 'Assistant Rigger'),
+(80, 'Transit Mixer Helper'),
+(81, 'Block Machine Operator'),
+(82, 'Fork Lift Operator'),
+(83, 'Plant Engineer'),
+(84, 'Diesel Hammer Operator'),
+(85, 'Concrete Pump Pipe Fitter'),
+(86, 'Long Boom Excavator Operator'),
+(87, 'Mixture Truck Helper'),
+(88, 'Low Bed Helper'),
+(89, 'Mechanical Helper'),
+(90, 'Low Bed Operator'),
+(91, 'Junior Fitter'),
+(92, 'Site Mechanical Engineer'),
+(93, 'Quantity Surveyor Engineer'),
+(94, 'Roller Operator'),
+(95, 'Backhoe Operator'),
+(96, 'Tractor Driver'),
+(97, 'Store Keeper'),
+(98, 'Assistant Lab Technician'),
+(99, 'Senior Project Manager'),
+(100, 'Trainee Officer'),
+(101, 'Rigger'),
+(102, 'Plant Operator'),
+(103, 'Junior Officer'),
+(104, 'Independent Director'),
+(105, 'Head of Project'),
+(106, 'Senior Manager'),
+(107, 'Foreman'),
+(108, 'Logistic Support Officer'),
+(109, 'Executive Director'),
+(110, 'Service Technician'),
+(111, 'Junior Technician'),
+(112, 'Managing Director'),
+(113, 'Chairman'),
+(114, 'Additional Managing Director'),
+(115, 'Chief Finance Officer'),
+(116, 'Head of QMS'),
+(117, 'Company Secretary'),
+(118, 'Accounts Assistant'),
+(119, 'Customer Care'),
+(120, 'Body Guard'),
+(121, 'Assistant Security Supervisor'),
+(122, 'Security Guard'),
+(123, 'Security Inspector'),
+(124, 'Front Desk Officer'),
+(125, 'Head of IT'),
+(126, 'Canteen Boy'),
+(127, 'Liason Officer'),
+(128, 'Incharge Billing And Doc.'),
+(129, 'Protocol Officer'),
+(130, 'Junior Engineer'),
+(131, 'Yard Checker'),
+(132, 'Sales ADM And Application Engg.'),
+(133, 'Head Technician'),
+(134, 'Head of Finance And Accounts'),
+(135, 'Terminal Superintendent'),
+(136, 'Area Manager'),
+(137, 'Share Officer'),
+(138, 'Store Officer'),
+(139, 'Security Supervisor'),
+(140, 'Security Officer'),
+(141, 'Painter'),
+(142, 'RST Operator'),
+(143, 'Assistant Yard Supervisor'),
+(144, 'Trailer Operator'),
+(145, 'Trainee Technician'),
+(146, 'Welder Project'),
+(147, 'Tyre Feeder'),
+(148, 'Trainee Engineer'),
+(149, 'Cleaner'),
+(150, 'Caretaker'),
+(151, 'Assistant Protocol Officer'),
+(152, 'In-Charge'),
+(153, 'Technical Helper'),
+(154, 'Loader'),
+(155, 'Advisor'),
+(156, 'Consultant'),
+(157, 'Estate Officer'),
+(158, 'Assistant Officer'),
+(159, 'Trainee Yard Checker'),
+(160, 'Door Closer'),
+(161, 'Yard Supervisor'),
+(162, 'Lasher'),
+(163, 'Additional Chief Engineer'),
+(164, 'Senior Engineer'),
+(165, 'Senior Mechanic'),
+(166, 'Vulcanizer'),
+(167, 'Semi Mechanic'),
+(168, 'Lathe Man'),
+(169, 'Head of CTMS'),
+(170, 'Service Engineer'),
+(171, 'SC Operator'),
+(172, 'Senior Equipment Controller'),
+(173, 'Co-Ordinator'),
+(174, 'Assistant Equipment Co-Ordinator'),
+(175, 'Documentation Staff Trainee'),
+(176, 'Regional Manager'),
+(177, 'Terminal Manager'),
+(178, 'CFS Shed Incharge'),
+(179, 'Photo copier'),
+(180, 'Office Boy'),
+(181, 'RTG SC Controller'),
+(182, 'Assistant Welfare Officer'),
+(183, 'Radio And HHT Keeper'),
+(184, 'Documentation Staff'),
+(185, 'RTG Checker'),
+(186, 'Keep Down Checker'),
+(187, 'Handover Clerk'),
+(188, 'Tally Clerk'),
+(189, 'ICD Checker'),
+(190, 'Carpenter'),
+(191, 'Jetty Sareng'),
+(192, 'Mark Man'),
+(193, 'Assistant Ship Planner'),
+(194, 'Senior Assistant Ship Supervisor'),
+(195, 'Tracer'),
+(196, 'Assistant Ship Supervisor'),
+(197, 'Deck And Crane Checker'),
+(198, 'Checker'),
+(199, 'Empty Area Checker'),
+(200, 'RTG Operator'),
+(201, 'Trainee Tracer'),
+(202, 'FLT Operator'),
+(203, 'Lasher Foreman'),
+(204, 'ITV Operator'),
+(205, 'ITV Supervisor'),
+(206, 'QGC Operator'),
+(207, 'Ship And Yard Planner'),
+(208, 'Import And Export Permission Clerk'),
+(209, 'Senior Yard Supervisor'),
+(210, 'Assistant Yard Superintendent'),
+(211, 'Senior Keep Down Checker'),
+(212, 'Trainee RTG Operator'),
+(213, 'Escort Officer'),
+(214, 'Supervisor In-Charge'),
+(215, 'Medical Assistant'),
+(216, 'Labour In-Charge'),
+(217, 'Delivery Supervisor'),
+(218, 'Billing Assistant'),
+(219, 'Labour Supervisor'),
+(220, 'Assistant Terminal Suprintendent'),
+(221, 'Assistant Billing Coordinator'),
+(222, 'Application Engineer'),
+(223, 'Marine Leader'),
+(224, 'IT Assistant'),
+(225, 'Head of Product and Service'),
+(226, 'Web Designer'),
+(227, 'Delivery Checker'),
+(228, 'Chief Marketing Officer'),
+(229, 'Assistant Mechanic'),
+(230, 'Assistant Carpenter'),
+(231, 'Operation Engineer'),
+(232, 'Assistant Foreman'),
+(233, 'Factory Manager'),
+(234, 'Assistant Operator'),
+(235, 'Store Assistant'),
+(236, 'Junior Operator'),
+(237, 'Quality Control Inspector');
 
 -- --------------------------------------------------------
 
@@ -530,6 +996,14 @@ CREATE TABLE `inv_issue` (
   `issue_image` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+--
+-- Dumping data for table `inv_issue`
+--
+
+INSERT INTO `inv_issue` (`id`, `issue_id`, `issue_date`, `received_by`, `receiver_phone`, `use_in`, `no_of_material`, `total_amount`, `remarks`, `project_id`, `warehouse_id`, `issued_by`, `approval_status`, `approved_by`, `approved_at`, `approval_remarks`, `issue_image`) VALUES
+(1, 'IS-CW-001', '2023-09-05', '', '', 'CH-01', 0, 15500, 'Okay', '1', '1', '1', 0, '', NULL, '', ''),
+(2, 'IS-CW-002', '2023-09-05', '', '', 'FLT-04', 0, 15500, 'Okay', '1', '1', '1', 0, '', NULL, '', '');
+
 -- --------------------------------------------------------
 
 --
@@ -554,6 +1028,16 @@ CREATE TABLE `inv_issuedetail` (
   `approval_status` tinyint(1) NOT NULL DEFAULT 0,
   `is_manual_code_edit` tinyint(1) NOT NULL DEFAULT 0 COMMENT 'for checking manual code update'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `inv_issuedetail`
+--
+
+INSERT INTO `inv_issuedetail` (`id`, `issue_id`, `issue_date`, `material_id`, `material_name`, `unit`, `issue_qty`, `issue_price`, `part_no`, `use_in`, `project_id`, `warehouse_id`, `package_id`, `building_id`, `approval_status`, `is_manual_code_edit`) VALUES
+(1, 'IS-CW-001', '2023-09-05', '02-01', '1', '20', 1, 4500, '920871.0163', 'CH-01', '1', '1', '', '', 0, 0),
+(2, 'IS-CW-001', '2023-09-05', '02-02', '2', '20', 2, 5500, '923829.1401', 'CH-01', '1', '1', '', '', 0, 0),
+(3, 'IS-CW-002', '2023-09-05', '02-01', '1', '20', 1, 4500, '920871.0163', 'FLT-04', '1', '1', '', '', 0, 0),
+(4, 'IS-CW-002', '2023-09-05', '02-02', '2', '20', 2, 5500, '923829.1401', 'FLT-04', '1', '1', '', '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -644,6 +1128,16 @@ CREATE TABLE `inv_material` (
   `is_manual_code_edit` tinyint(1) NOT NULL DEFAULT 0 COMMENT 'for checking manual code update '
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+--
+-- Dumping data for table `inv_material`
+--
+
+INSERT INTO `inv_material` (`id`, `material_id_code`, `material_id`, `material_sub_id`, `material_level3_id`, `material_level4_id`, `material_description`, `spec`, `location`, `type`, `material_min_stock`, `avg_con_sump`, `lead_time`, `re_order_level`, `qty_unit`, `op_balance_qty`, `op_balance_val`, `chk_print`, `cur_qty`, `cur_price`, `cur_value`, `last_issue`, `last_receive`, `part_no`, `current_balance`, `is_manual_code_edit`) VALUES
+(1, '02-01', '2', '0', 0, 0, 'ENGINE', '-', '', '', 1, NULL, NULL, 0, '20', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, '920871.0163', 8, 0),
+(2, '02-02', '2', '0', 0, 0, 'FILTER HOUSING', '-', '-', '', 1, NULL, NULL, 0, '20', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, '923829.1401', 16, 0),
+(3, '01-01', '1', '0', 0, 0, 'xcv', 'xcv', '', '', 3, NULL, NULL, 0, '30', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, 'xcv', 0, 0),
+(4, '03-01', '14', '0', 0, 0, 'sfsd', 'sdfs', 'sdfs', '', 3, NULL, NULL, 0, '30', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, 'sdfds', 0, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -674,6 +1168,18 @@ CREATE TABLE `inv_materialbalance` (
   `is_manual_code_edit` tinyint(1) NOT NULL DEFAULT 0 COMMENT 'for checking manual code update	'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+--
+-- Dumping data for table `inv_materialbalance`
+--
+
+INSERT INTO `inv_materialbalance` (`id`, `mb_ref_id`, `mb_materialid`, `mb_date`, `mbin_qty`, `mbin_val`, `mbout_qty`, `mbout_val`, `mbprice`, `mbtype`, `mbserial`, `mbserial_id`, `mbunit_id`, `jvno`, `part_no`, `project_id`, `warehouse_id`, `package_id`, `building_id`, `approval_status`, `is_manual_code_edit`) VALUES
+(1, 'MRR-0001', '02-01', '2023-09-05', 10, 45000, 0, 0, 4500, 'Receive', 1.1, '1', '20', 'MRR-0001', '920871.0163', '1', '1', '', '', 0, 0),
+(2, 'MRR-0001', '02-02', '2023-09-05', 20, 110000, 0, 0, 5500, 'Receive', 1.1, '1', '20', 'MRR-0001', '923829.1401', '1', '1', '', '', 0, 0),
+(3, 'IS-CW-001', '02-01', '2023-09-05', 0, 0, 1, 4500, 4500, 'Issue', 1.1, '1', '20', 'IS-CW-001', '920871.0163', '1', '1', '', '', 0, 0),
+(4, 'IS-CW-001', '02-02', '2023-09-05', 0, 0, 2, 11000, 5500, 'Issue', 1.1, '1', '20', 'IS-CW-001', '923829.1401', '1', '1', '', '', 0, 0),
+(5, 'IS-CW-002', '02-01', '2023-09-05', 0, 0, 1, 4500, 4500, 'Issue', 1.1, '1', '20', 'IS-CW-002', '920871.0163', '1', '1', '', '', 0, 0),
+(6, 'IS-CW-002', '02-02', '2023-09-05', 0, 0, 2, 11000, 5500, 'Issue', 1.1, '1', '20', 'IS-CW-002', '923829.1401', '1', '1', '', '', 0, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -702,8 +1208,22 @@ CREATE TABLE `inv_materialcategorysub` (
   `stock_acct_id` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `chk_sbalance` int(11) DEFAULT NULL,
   `consumption_ac` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `same_level` tinyint(4) NOT NULL
+  `same_level` tinyint(4) NOT NULL,
+  `has_child` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `inv_materialcategorysub`
+--
+
+INSERT INTO `inv_materialcategorysub` (`id`, `category_id`, `parent_id`, `_order`, `category_description`, `stock_acct_id`, `chk_sbalance`, `consumption_ac`, `same_level`, `has_child`) VALUES
+(1, '01-00', 0, 1, 'RST', NULL, NULL, NULL, 0, 1),
+(2, '02-00', 1, 2, 'KALMAR', NULL, NULL, NULL, 0, 0),
+(3, '03-00', 1, 3, 'LIEBHERR', NULL, NULL, NULL, 0, 1),
+(19, '04-00', 3, 4, 'rtr', NULL, NULL, NULL, 0, 0),
+(20, '05-00', 0, 6, 'ghjgg', NULL, NULL, NULL, 0, 0),
+(21, '06-00', 0, 7, 'dfsdfsd', NULL, NULL, NULL, 0, 0),
+(22, '07-00', 0, 8, 'hjhj', NULL, NULL, NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -752,6 +1272,23 @@ CREATE TABLE `inv_material_partno_detail` (
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `inv_material_partno_detail`
+--
+
+INSERT INTO `inv_material_partno_detail` (`id`, `inv_material_id`, `material_id_code`, `part_no`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 1, '01-01', 'vbn', 1, 1, 1, '2023-09-05 00:00:00', '2023-09-05 00:00:00'),
+(2, 1, '02-01', '920871.0163', 1, 1, 1, '2023-09-05 00:00:00', '2023-09-05 00:00:00'),
+(3, 2, '02-02', '923829.1401', 1, 1, 1, '2023-09-05 00:00:00', '2023-09-05 00:00:00'),
+(4, 3, '01-01', 'xcv', 1, 1, 1, '2023-09-05 00:00:00', '2023-09-05 00:00:00'),
+(5, 4, '03-01', 'sdfds', 1, 1, 1, '2023-09-05 00:00:00', '2023-09-05 00:00:00'),
+(6, 0, '02-01', '920871.0163', 1, 1, 1, '2023-09-07 00:00:00', '2023-09-07 00:00:00'),
+(7, 0, '02-01', '920871.0163', 1, 1, 1, '2023-09-19 00:00:00', '2023-09-19 00:00:00'),
+(8, 0, '02-01', '920871.0163', 1, 1, 1, '2023-09-19 00:00:00', '2023-09-19 00:00:00'),
+(9, 0, '02-01', '920871.0163', 1, 1, 1, '2023-09-19 00:00:00', '2023-09-19 00:00:00'),
+(10, 0, '02-01', '920871.0163', 1, 1, 1, '2023-09-19 00:00:00', '2023-09-19 00:00:00'),
+(11, 0, '02-01', '920871.0163', 1, 1, 1, '2023-09-19 00:00:00', '2023-09-19 00:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -797,6 +1334,14 @@ CREATE TABLE `inv_product_price` (
   `updated_at` date NOT NULL,
   `updated_by` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `inv_product_price`
+--
+
+INSERT INTO `inv_product_price` (`id`, `mrr_no`, `material_id`, `receive_details_id`, `qty`, `price`, `part_no`, `status`, `created_at`, `cerated_by`, `updated_at`, `updated_by`) VALUES
+(1, 'MRR-0001', '02-01', 1, 8, 4500, '920871.0163', 1, '2023-09-05', '', '0000-00-00', ''),
+(2, 'MRR-0001', '02-02', 2, 16, 5500, '923829.1401', 1, '2023-09-05', '', '0000-00-00', '');
 
 -- --------------------------------------------------------
 
@@ -886,6 +1431,13 @@ CREATE TABLE `inv_receive` (
   `mrr_image` varchar(10000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+--
+-- Dumping data for table `inv_receive`
+--
+
+INSERT INTO `inv_receive` (`id`, `mrr_no`, `mrr_date`, `purchase_id`, `receive_acct_id`, `supplier_id`, `postedtogl`, `vat_challan_no`, `remarks`, `receive_type`, `project_id`, `warehouse_id`, `receive_unit_id`, `chk_year_end`, `receive_total`, `no_of_material`, `challanno`, `challan_date`, `jv_no`, `part_no`, `requisitionno`, `requisition_date`, `received_by`, `approval_status`, `approved_by`, `approved_at`, `approval_remarks`, `mrr_image`) VALUES
+(1, 'MRR-0001', '2023-09-05', 'PR-0001', '6-14-010', 'SID-001', 0, '', 'Okay', 'Credit', '1', '1', '1', NULL, 155000, 30, 'CH-0001', '2023-09-05', NULL, '923829.1401', 'RLP-0001', '2023-09-05 00:00:00', '1', 0, '', '0000-00-00 00:00:00', '', '');
+
 -- --------------------------------------------------------
 
 --
@@ -909,6 +1461,14 @@ CREATE TABLE `inv_receivedetail` (
   `approval_status` tinyint(1) NOT NULL DEFAULT 0,
   `is_manual_code_edit` tinyint(1) NOT NULL DEFAULT 0 COMMENT 'for checking manual code update'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `inv_receivedetail`
+--
+
+INSERT INTO `inv_receivedetail` (`id`, `mrr_no`, `material_id`, `material_name`, `unit_id`, `receive_qty`, `unit_price`, `sl_no`, `total_receive`, `rd_serial_id`, `part_no`, `project_id`, `warehouse_id`, `approval_status`, `is_manual_code_edit`) VALUES
+(1, 'MRR-0001', '02-01', '1', 20, 10, 4500, 1, 45000, '', '920871.0163', '1', '1', 0, 0),
+(2, 'MRR-0001', '02-02', '2', 20, 20, 5500, 1, 110000, '', '923829.1401', '1', '1', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -1031,6 +1591,13 @@ CREATE TABLE `inv_supplierbalance` (
   `sb_partac_id` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `approval_status` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `inv_supplierbalance`
+--
+
+INSERT INTO `inv_supplierbalance` (`id`, `sb_ref_id`, `warehouse_id`, `sb_date`, `sb_supplier_id`, `sb_dr_amount`, `sb_cr_amount`, `sb_remark`, `sb_partac_id`, `approval_status`) VALUES
+(1, 'MRR-0001', '1', '2023-09-05', 'SID-001', 0, 155000, 'Okay', 'MRR-0001', 0);
 
 -- --------------------------------------------------------
 
@@ -1257,6 +1824,55 @@ CREATE TABLE `modules` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notesheet_access_chain`
+--
+
+CREATE TABLE `notesheet_access_chain` (
+  `id` int(11) NOT NULL,
+  `chain_type` varchar(150) NOT NULL DEFAULT 'default',
+  `division_id` int(11) NOT NULL,
+  `department_id` int(11) NOT NULL,
+  `project_id` int(11) NOT NULL,
+  `notesheet_type` int(11) DEFAULT NULL,
+  `users` longtext NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `notesheet_access_chain`
+--
+
+INSERT INTO `notesheet_access_chain` (`id`, `chain_type`, `division_id`, `department_id`, `project_id`, `notesheet_type`, `users`, `created_by`, `created_at`, `updated_by`, `updated_at`) VALUES
+(24, 'default', 16, 129, 21, 0, '{\"3374\":\"1\",\"3373\":\"2\",\"3372\":\"3\"}', 1, '2023-09-21 07:55:41', NULL, NULL),
+(25, 'default', 16, 130, 21, 0, '{\"3377\":\"1\",\"3373\":\"2\",\"3372\":\"3\"}', 1, '2023-09-21 08:01:03', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notesheet_roles_group`
+--
+
+CREATE TABLE `notesheet_roles_group` (
+  `id` int(11) NOT NULL,
+  `name` varchar(450) NOT NULL,
+  `details` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `notesheet_roles_group`
+--
+
+INSERT INTO `notesheet_roles_group` (`id`, `name`, `details`) VALUES
+(1, 'member', '[\"g1\",\"g2\",\"g3\",\"g4\",\"g5\",\"g6\",\"g7\",\"g8\"]'),
+(2, 'acknowledgers', '[\"g9\",\"g10\",\"g11\",\"g12\",\"g13\",\"g14\",\"g15\",\"g16\"]'),
+(3, 'approval', '[\"g17\",\"g18\",\"g19\",\"g20\"]');
 
 -- --------------------------------------------------------
 
@@ -1602,6 +2218,29 @@ CREATE TABLE `present_condition` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `priority_details`
+--
+
+CREATE TABLE `priority_details` (
+  `id` int(11) NOT NULL,
+  `name` varchar(250) NOT NULL,
+  `color_code` varchar(350) NOT NULL,
+  `show_order` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `priority_details`
+--
+
+INSERT INTO `priority_details` (`id`, `name`, `color_code`, `show_order`) VALUES
+(1, 'Urgent', 'danger', 1),
+(2, 'High', 'info', 2),
+(3, 'Medium', 'warning', 3),
+(4, 'Normal', 'success', 4);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `products`
 --
 
@@ -1669,12 +2308,14 @@ CREATE TABLE `product_movement_details` (
 CREATE TABLE `projects` (
   `id` int(11) NOT NULL,
   `code` varchar(200) DEFAULT NULL,
-  `name` varchar(500) NOT NULL,
-  `incharge` varchar(100) NOT NULL,
+  `company_id` int(11) NOT NULL,
+  `division_id` int(11) NOT NULL,
+  `department_id` int(11) NOT NULL,
+  `project_name` varchar(500) NOT NULL,
   `address` text DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
@@ -1683,8 +2324,27 @@ CREATE TABLE `projects` (
 -- Dumping data for table `projects`
 --
 
-INSERT INTO `projects` (`id`, `code`, `name`, `incharge`, `address`, `created_by`, `updated_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'PR-001', 'CTED, Chattogram', 'Lt Commander M Tafsir Uddin Ahmed(Retd)', 'Chattogram Port, Chattogram', NULL, NULL, '2020-12-14 04:48:32', NULL, NULL);
+INSERT INTO `projects` (`id`, `code`, `company_id`, `division_id`, `department_id`, `project_name`, `address`, `created_by`, `updated_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'P-001', 7, 5, 40, 'Payra Project', '72, Mohakhali C/A, (8th Floor), Rupayan Center, Dhaka-1212, Bangladesh.\r\nTel. : (88-02) 9825705, 9891562, 9891597, 9856358-9,\r\n9857902, 9852454, 9854423,\r\nFax: (88-02) 9855949, \r\nWeb:www.saifpowertecltd.com', 1, NULL, '2019-02-10 08:09:28', '2019-04-09 03:46:55', NULL),
+(3, 'P-003', 0, 0, 0, 'PCT,Ctg', '72, Mohakhali C/A, (8th Floor), Rupayan Center, Dhaka-1212, Bangladesh.\r\nTel. : (88-02) 9825705, 9891562, 9891597, 9856358-9,\r\n9857902, 9852454, 9854423,\r\nFax: (88-02) 9855949, \r\nWeb:www.saifpowertecltd.com', 1, NULL, '2019-02-10 09:05:36', '2019-05-12 13:09:34', NULL),
+(4, '04', 0, 0, 0, 'NCT,Ctg', '', 5, NULL, '2019-05-12 13:14:45', '2019-05-12 13:14:45', NULL),
+(5, '03', 0, 0, 0, 'Bhashanchor', 'test', 5, NULL, '2019-05-14 07:54:29', '2019-05-14 07:54:29', NULL),
+(6, '04', 0, 0, 0, 'Karnophuli', NULL, 5, NULL, '2019-05-14 07:55:39', '2019-05-14 07:55:39', NULL),
+(7, '05', 0, 0, 0, 'Payra Port', NULL, 5, NULL, '2019-05-14 07:56:11', '2019-05-14 07:56:11', NULL),
+(9, '07', 0, 0, 0, 'Shirajgonj', NULL, 5, NULL, '2019-05-14 08:03:14', '2019-05-14 08:03:14', NULL),
+(10, '08', 0, 0, 0, 'Raozan Road', NULL, 5, NULL, '2019-05-14 08:05:55', '2019-05-14 08:05:55', NULL),
+(11, '10', 0, 0, 0, 'Mongla Port Project', NULL, 5, NULL, '2019-05-25 17:38:21', '2019-05-25 17:38:21', NULL),
+(12, NULL, 0, 0, 0, 'CWLP', NULL, NULL, NULL, NULL, NULL, NULL),
+(14, NULL, 0, 0, 0, 'MPA', NULL, NULL, NULL, NULL, NULL, NULL),
+(15, NULL, 0, 0, 0, 'Gohira', NULL, NULL, NULL, NULL, NULL, NULL),
+(16, NULL, 0, 0, 0, 'MCC', NULL, NULL, NULL, NULL, NULL, NULL),
+(17, NULL, 0, 0, 0, 'Pubail', NULL, NULL, NULL, NULL, NULL, NULL),
+(18, NULL, 0, 0, 0, 'Maxon Power', NULL, NULL, NULL, NULL, NULL, NULL),
+(19, NULL, 0, 0, 0, 'Dredging', NULL, NULL, NULL, NULL, NULL, NULL),
+(20, NULL, 0, 0, 0, 'Netrokonah', NULL, NULL, NULL, NULL, NULL, NULL),
+(21, 'P-000', 19, 16, 131, 'Head Office', 'Khawaja Tower[13th Floor], 95 Bir Uttam A.K Khandokar Road, Mohakhali C/A, Dhaka-1212, Bangladesh', NULL, NULL, NULL, NULL, NULL),
+(22, '', 0, 0, 0, 'Mymensingh city corporation', 'Mymensingh ', NULL, NULL, NULL, NULL, NULL),
+(23, NULL, 0, 0, 0, 'Rental Site', NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1705,30 +2365,221 @@ CREATE TABLE `project_type` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `rlp_access_chain`
+--
+
+CREATE TABLE `rlp_access_chain` (
+  `id` int(11) NOT NULL,
+  `chain_type` varchar(150) NOT NULL DEFAULT 'default',
+  `division_id` int(11) NOT NULL,
+  `department_id` int(11) NOT NULL,
+  `project_id` int(11) NOT NULL,
+  `rlp_type` int(11) DEFAULT NULL,
+  `users` longtext NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `rlp_access_chain`
+--
+
+INSERT INTO `rlp_access_chain` (`id`, `chain_type`, `division_id`, `department_id`, `project_id`, `rlp_type`, `users`, `created_by`, `created_at`, `updated_by`, `updated_at`) VALUES
+(64, 'default', 16, 130, 21, 0, '{\"3374\":\"1\",\"3373\":\"2\",\"3372\":\"3\"}', 1, '2023-09-20 11:48:22', NULL, NULL),
+(67, 'default', 5, 32, 21, 0, '{\"3374\":\"1\",\"3373\":\"2\",\"3372\":\"3\"}', 1, '2023-09-21 09:37:05', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rlp_acknowledgement`
+--
+
+CREATE TABLE `rlp_acknowledgement` (
+  `id` int(11) NOT NULL,
+  `rlp_info_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `ack_order` int(11) NOT NULL COMMENT 'acknowledge order to show the RLP',
+  `ack_status` tinyint(4) NOT NULL DEFAULT 0,
+  `ack_request_date` datetime NOT NULL,
+  `ack_updated_date` datetime DEFAULT NULL,
+  `is_visible` tinyint(1) NOT NULL DEFAULT 0 COMMENT '0=not visible; 1= visible',
+  `created_by` int(11) NOT NULL,
+  `updated_by` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `rlp_acknowledgement`
+--
+
+INSERT INTO `rlp_acknowledgement` (`id`, `rlp_info_id`, `user_id`, `ack_order`, `ack_status`, `ack_request_date`, `ack_updated_date`, `is_visible`, `created_by`, `updated_by`) VALUES
+(1332, 1, 3374, 1, 0, '2023-09-21 11:03:55', NULL, 1, 1, NULL),
+(1333, 1, 3373, 2, 0, '2023-09-21 11:03:54', NULL, 0, 1, NULL),
+(1334, 1, 3372, 3, 0, '2023-09-21 11:03:55', NULL, 0, 1, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rlp_delete_history`
+--
+
+CREATE TABLE `rlp_delete_history` (
+  `id` int(11) NOT NULL,
+  `rlp_info_id` int(11) NOT NULL,
+  `deleted_by` int(11) NOT NULL,
+  `deleted_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rlp_details`
+--
+
+CREATE TABLE `rlp_details` (
+  `id` int(11) NOT NULL,
+  `rlp_info_id` int(11) NOT NULL,
+  `item_des` longtext DEFAULT NULL,
+  `purpose` longtext DEFAULT NULL,
+  `quantity` varchar(100) DEFAULT NULL,
+  `unit` varchar(11) NOT NULL,
+  `unit_price` float NOT NULL,
+  `amount` float NOT NULL,
+  `estimated_price` float DEFAULT NULL,
+  `supplier` text DEFAULT NULL,
+  `details_remarks` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `rlp_details`
+--
+
+INSERT INTO `rlp_details` (`id`, `rlp_info_id`, `item_des`, `purpose`, `quantity`, `unit`, `unit_price`, `amount`, `estimated_price`, `supplier`, `details_remarks`) VALUES
+(1, 1, 'Pendrive', 'office', '1', 'PCS', 800, 800, NULL, '', ''),
+(2, 1, 'SSD', 'office', '1', 'PCS', 4000, 4000, NULL, '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rlp_info`
+--
+
+CREATE TABLE `rlp_info` (
+  `id` int(11) NOT NULL,
+  `rlp_no` varchar(100) NOT NULL,
+  `rlp_user_id` int(11) UNSIGNED NOT NULL,
+  `rlp_user_office_id` varchar(500) NOT NULL,
+  `priority` tinyint(4) NOT NULL,
+  `request_date` datetime NOT NULL,
+  `request_division` int(11) DEFAULT NULL,
+  `request_department` int(11) NOT NULL,
+  `request_project` int(11) NOT NULL,
+  `request_person` varchar(650) DEFAULT NULL,
+  `designation` varchar(500) DEFAULT NULL,
+  `email` varchar(500) NOT NULL,
+  `contact_number` varchar(100) DEFAULT NULL,
+  `user_remarks` text DEFAULT NULL,
+  `totalamount` float NOT NULL,
+  `rlp_status` tinyint(1) NOT NULL DEFAULT 5,
+  `is_viewd` tinyint(1) NOT NULL DEFAULT 0,
+  `is_ns` tinyint(1) NOT NULL DEFAULT 0,
+  `created_by` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  `updated_at` datetime NOT NULL,
+  `is_delete` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `rlp_info`
+--
+
+INSERT INTO `rlp_info` (`id`, `rlp_no`, `rlp_user_id`, `rlp_user_office_id`, `priority`, `request_date`, `request_division`, `request_department`, `request_project`, `request_person`, `designation`, `email`, `contact_number`, `user_remarks`, `totalamount`, `rlp_status`, `is_viewd`, `is_ns`, `created_by`, `created_at`, `updated_by`, `updated_at`, `is_delete`) VALUES
+(1, 'RLP---2023-09-001', 1, '', 2, '2023-09-21 12:00:00', 5, 32, 21, 'Atiqur Rahman Bhuiyan', '', '', '', 'Okay', 0, 5, 0, 0, 1, '2023-09-21 11:03:54', NULL, '0000-00-00 00:00:00', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rlp_remarks_history`
+--
+
+CREATE TABLE `rlp_remarks_history` (
+  `id` int(11) NOT NULL,
+  `rlp_info_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `remarks` longtext NOT NULL,
+  `remarks_date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `roles`
 --
 
 CREATE TABLE `roles` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(191) NOT NULL,
-  `all` tinyint(1) NOT NULL DEFAULT 0,
-  `sort` smallint(5) UNSIGNED NOT NULL DEFAULT 0,
-  `status` tinyint(1) NOT NULL DEFAULT 1,
-  `created_by` int(11) DEFAULT NULL,
-  `updated_by` int(10) UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `id` int(11) NOT NULL,
+  `name` varchar(400) NOT NULL,
+  `short_name` varchar(250) NOT NULL,
+  `show_order` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `roles`
 --
 
-INSERT INTO `roles` (`id`, `name`, `all`, `sort`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(14, 'Admin', 0, 0, 1, NULL, NULL, NULL, NULL, NULL),
-(15, 'Operator', 0, 0, 1, NULL, NULL, NULL, NULL, NULL),
-(16, 'Super Admin', 0, 0, 1, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `roles` (`id`, `name`, `short_name`, `show_order`) VALUES
+(1, 'member', 'sa', 1),
+(2, 'acknowledgers', 'ak', 0),
+(3, 'approval', 'ap', 0),
+(4, 'team88', '88', 0),
+(5, 'superadmin', 'sa', 0),
+(6, 'admin', 'ad', 0),
+(7, 'rlp_admin', 'g3', 0),
+(8, 'Grade-06', 'g6', 0),
+(9, 'Grade-05', 'g5', 0),
+(10, 'Grade-17', 'g17', 0),
+(11, 'Grade-13', 'g13', 0),
+(12, 'Grade-04', 'g4', 0),
+(13, 'Grade-14', 'g14', 0),
+(14, 'Grade-12', 'g12', 0),
+(15, 'Grade-09', 'g9', 0),
+(16, 'Grade-18', 'g18', 0),
+(17, 'Grade-15', 'g15', 0),
+(18, 'Grade-11', 'g11', 0),
+(19, 'Grade-16', 'g16', 0),
+(20, 'Grade-19', 'g19', 0),
+(21, 'Grade-20', 'g20', 0),
+(22, 'Grade-17S', 'g17s', 0),
+(23, 'Grade-07', 'g7', 0),
+(24, 'Grade-08', 'g8', 0),
+(25, 'Grade-10', 'g10', 0),
+(26, 'rlp_admin', 'g3', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles_group`
+--
+
+CREATE TABLE `roles_group` (
+  `id` int(11) NOT NULL,
+  `name` varchar(450) NOT NULL,
+  `details` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `roles_group`
+--
+
+INSERT INTO `roles_group` (`id`, `name`, `details`) VALUES
+(1, 'member', '[\"g1\",\"g2\",\"g3\",\"g4\",\"g5\",\"g6\",\"g7\",\"g8\"]'),
+(2, 'acknowledgers', '[\"g9\",\"g10\",\"g11\",\"g12\",\"g13\",\"g14\",\"g15\"]'),
+(3, 'approval', '[\"g16\",\"g17\",\"g18\",\"g19\",\"g20\"]'),
+(4, 'team88', '[\"g1\",\"g2\",\"g3\",\"g4\",\"g5\",\"g6\",\"g7\",\"g8\",\"g9\",\"g10\",\"g11\",\"g12\",\"g13\",\"g14\",\"g15\"]'),
+(5, 'admin', '[\"g1\",\"g2\",\"g3\",\"g4\",\"g5\",\"g6\",\"g7\",\"g8\",\"g9\",\"g10\",\"g11\",\"g12\",\"g13\",\"g14\",\"g15\",\"g16\",\"g17\",\"g18\",\"g19\",\"g20\"]'),
+(6, 'superadmin', '[\"g1\",\"g2\",\"g3\",\"g4\",\"g5\",\"g6\",\"g7\",\"g8\",\"g9\",\"g10\",\"g11\",\"g12\",\"g13\",\"g14\",\"g15\",\"g16\",\"g17\",\"g18\",\"g19\",\"g20\"]');
 
 -- --------------------------------------------------------
 
@@ -1815,6 +2666,31 @@ CREATE TABLE `social_logins` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `status_details`
+--
+
+CREATE TABLE `status_details` (
+  `id` int(11) NOT NULL,
+  `name` varchar(350) NOT NULL,
+  `bg_color` varchar(450) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `status_details`
+--
+
+INSERT INTO `status_details` (`id`, `name`, `bg_color`) VALUES
+(1, 'Approved', '#C3FDB8'),
+(2, 'Processing', '#31708f'),
+(3, 'Reject', '#a94442'),
+(4, 'On Held', '#8a6d3b'),
+(5, 'Pending', '#FFDB58'),
+(6, 'Recommended', '#00ACD6'),
+(7, 'Draft', '#e57817');
 
 -- --------------------------------------------------------
 
@@ -2236,7 +3112,21 @@ INSERT INTO `userlog` (`id`, `userId`, `username`, `role_id`, `employee_id`, `us
 (233, 1, 'Admin CTED', 14, '', 0x3a3a31, '2023-08-30 03:20:30'),
 (234, 1, 'Admin CTED', 14, '', 0x3a3a31, '2023-09-03 03:44:57'),
 (235, 1, 'Admin INV', 14, '', 0x3a3a31, '2023-09-03 03:56:53'),
-(236, 1, 'Admin INV', 14, '', 0x3a3a31, '2023-09-04 03:46:05');
+(236, 1, 'Admin INV', 14, '', 0x3a3a31, '2023-09-04 03:46:05'),
+(237, 1, 'Admin INV', 14, '', 0x3a3a31, '2023-09-05 03:38:18'),
+(238, 1, 'Admin INV', 14, '', 0x3a3a31, '2023-09-07 03:32:17'),
+(239, 1, 'Admin INV', 14, '', 0x3a3a31, '2023-09-19 04:56:14'),
+(240, 1, 'Admin INV', 14, '', 0x3a3a31, '2023-09-19 06:06:37'),
+(241, 1, 'Admin INV', 14, '', 0x3a3a31, '2023-09-20 03:31:05'),
+(242, 1, ' ', 1, '', 0x3a3a31, '2023-09-20 03:41:06'),
+(243, 1, '88i Admin', 1, '', 0x3a3a31, '2023-09-20 03:42:01'),
+(244, 1, '88i Admin', 14, '', 0x3a3a31, '2023-09-20 03:42:53'),
+(245, 1, '88i Admin', 14, '', 0x3a3a31, '2023-09-20 08:56:26'),
+(246, 1, '88i Admin', 14, '', 0x3a3a31, '2023-09-21 03:51:52'),
+(247, 1, '88i Admin', 14, '', 0x3a3a31, '2023-09-21 05:00:11'),
+(248, 1, '88i Admin', 14, '', 0x3a3a31, '2023-09-21 08:32:10'),
+(249, 1, '88i Admin', 14, '', 0x3a3a31, '2023-09-21 10:10:11'),
+(250, 3374, ' ', 3, '', 0x3a3a31, '2023-09-21 11:03:33');
 
 -- --------------------------------------------------------
 
@@ -2245,6 +3135,53 @@ INSERT INTO `userlog` (`id`, `userId`, `username`, `role_id`, `employee_id`, `us
 --
 
 CREATE TABLE `users` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `branch_id` int(11) DEFAULT NULL,
+  `department_id` int(11) DEFAULT NULL,
+  `project_id` int(11) NOT NULL,
+  `office_id` varchar(550) DEFAULT NULL,
+  `role_id` int(11) DEFAULT NULL,
+  `type` varchar(50) NOT NULL,
+  `store_id` int(11) NOT NULL,
+  `designation` varchar(650) DEFAULT NULL,
+  `role_name` varchar(250) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `contact_number` varchar(100) DEFAULT NULL,
+  `profile_image` varchar(650) DEFAULT NULL,
+  `signature_image` varchar(550) DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `is_password_changed` tinyint(1) NOT NULL DEFAULT 0,
+  `is_status` tinyint(1) NOT NULL DEFAULT 1,
+  `first_name` varchar(100) NOT NULL,
+  `last_name` varchar(100) NOT NULL,
+  `user_type` varchar(50) NOT NULL,
+  `warehouse_id` int(11) NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `branch_id`, `department_id`, `project_id`, `office_id`, `role_id`, `type`, `store_id`, `designation`, `role_name`, `name`, `email`, `contact_number`, `profile_image`, `signature_image`, `password`, `is_password_changed`, `is_status`, `first_name`, `last_name`, `user_type`, `warehouse_id`, `created_by`, `created_at`, `updated_by`, `updated_at`) VALUES
+(1, 16, 131, 21, 'SA-000001', 14, '6', 1, '10', 'sa', '88 IT Admin', 'admin@admin.com', NULL, '', '16919031921667818730Nahid-Hasan-Sign1.png', 'e10adc3949ba59abbe56e057f20f883e', 1, 1, '88i', 'Admin', 'admin', 0, 0, '2020-03-16 09:03:06', 1, '2023-08-13 05:06:32'),
+(3372, 16, 131, 21, 'IEL-000002', 21, '3', 0, '112', 'g20', 'Tarafder Md Ruhul Saif', 's@gmail.com', NULL, NULL, NULL, 'e10adc3949ba59abbe56e057f20f883e', 0, 1, '', '', '', 0, 0, '2023-07-30 04:56:08', NULL, NULL),
+(3373, 16, 131, 21, 'IEL-000005', 13, '2', 0, '15', 'g14', 'Md Jobaer Kabir', 'jk@gmail.com', NULL, NULL, NULL, 'e10adc3949ba59abbe56e057f20f883e', 0, 1, '', '', '', 0, 0, '2023-07-30 04:56:41', NULL, NULL),
+(3374, 16, 129, 21, 'IEL-000020', 3, '2', 0, '2', 'g10', 'Md. Babul Farajee', 'bf@gmail.com', NULL, NULL, '16919032131669633451Zakir-Hussain-handwritten-signature-500x340-removebg-preview.png', 'e10adc3949ba59abbe56e057f20f883e', 1, 1, '', '', '', 0, 0, '2023-07-30 04:57:40', 1, '2023-08-13 05:06:53'),
+(3375, 16, 130, 21, 'IEL-000017', 5, '1', 0, '1', 'g8', 'Atiqur Rahman Bhuiyan', 'a@gmail.com', '01729714503', NULL, NULL, 'e10adc3949ba59abbe56e057f20f883e', 0, 1, '', '', '', 0, 0, '2023-07-30 05:09:21', 1, '2023-07-31 19:39:06'),
+(3377, 16, 130, 21, 'IEL-000016', 18, '2', 0, '2', 'g11', 'Muhammed Fakhrul Islam', 'fp@gmail.com', '123456', NULL, NULL, 'e10adc3949ba59abbe56e057f20f883e', 0, 1, '', '', '', 0, 0, '2023-07-31 19:41:37', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users2`
+--
+
+CREATE TABLE `users2` (
   `id` int(11) NOT NULL,
   `id2` int(10) UNSIGNED NOT NULL,
   `first_name` varchar(191) NOT NULL,
@@ -2268,10 +3205,10 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table `users2`
 --
 
-INSERT INTO `users` (`id`, `id2`, `first_name`, `last_name`, `user_type`, `project_id`, `warehouse_id`, `role_id`, `email`, `password`, `status`, `confirmation_code`, `confirmed`, `is_term_accept`, `remember_token`, `created_by`, `updated_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
+INSERT INTO `users2` (`id`, `id2`, `first_name`, `last_name`, `user_type`, `project_id`, `warehouse_id`, `role_id`, `email`, `password`, `status`, `confirmation_code`, `confirmed`, `is_term_accept`, `remember_token`, `created_by`, `updated_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 1, 'Admin', 'INV', 'admin', '1', '1', 14, 'admin@admin.com', 'e10adc3949ba59abbe56e057f20f883e', 1, 'b1970adb3f301c8440c81e45b526060c', 1, 0, 'PCgsDtfHhHDhADntGcj7D97A9e4U0gtx0hlLn2heuaMyQBq5Gaa2sP55BPGr', 1, 1, '2019-01-14 00:17:02', '2019-01-20 20:36:38', NULL),
 (4, 4, 'Super', 'Admin', 'superAdmin', '1', '1', 16, 'superadmin@admin.com', 'be05977add575832dc52655d4ad5c42e', 1, 'b1970adb3f301c8440c81e45b526060c', 1, 0, 'PCgsDtfHhHDhADntGcj7D97A9e4U0gtx0hlLn2heuaMyQBq5Gaa2sP55BPGr', 4, 4, NULL, NULL, NULL),
 (7, 1, 'User', 'Zilani', 'whm', '1', '1', 15, 'zilani@cted.com', 'dbe174b9745efb86baea199a90cb4a81', 1, 'b1970adb3f301c8440c81e45b526060c', 1, 0, 'PCgsDtfHhHDhADntGcj7D97A9e4U0gtx0hlLn2heuaMyQBq5Gaa2sP55BPGr', 1, 1, '2019-01-14 00:17:02', '2019-01-20 20:36:38', NULL),
@@ -2282,15 +3219,40 @@ INSERT INTO `users` (`id`, `id2`, `first_name`, `last_name`, `user_type`, `proje
 --
 
 --
+-- Indexes for table `branch`
+--
+ALTER TABLE `branch`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `buildings`
 --
 ALTER TABLE `buildings`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `companies`
+--
+ALTER TABLE `companies`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `complain_type`
 --
 ALTER TABLE `complain_type`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `department`
+--
+ALTER TABLE `department`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `branch_id` (`branch_id`);
+
+--
+-- Indexes for table `designations`
+--
+ALTER TABLE `designations`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -2534,6 +3496,18 @@ ALTER TABLE `materialbalance`
   ADD KEY `id` (`id`);
 
 --
+-- Indexes for table `notesheet_access_chain`
+--
+ALTER TABLE `notesheet_access_chain`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `notesheet_roles_group`
+--
+ALTER TABLE `notesheet_roles_group`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `packages`
 --
 ALTER TABLE `packages`
@@ -2552,15 +3526,74 @@ ALTER TABLE `permission_role`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `priority_details`
+--
+ALTER TABLE `priority_details`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `projects`
 --
 ALTER TABLE `projects`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `rlp_access_chain`
+--
+ALTER TABLE `rlp_access_chain`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `rlp_acknowledgement`
+--
+ALTER TABLE `rlp_acknowledgement`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `rlp_info_id` (`rlp_info_id`);
+
+--
+-- Indexes for table `rlp_delete_history`
+--
+ALTER TABLE `rlp_delete_history`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `rlp_info_id` (`rlp_info_id`);
+
+--
+-- Indexes for table `rlp_details`
+--
+ALTER TABLE `rlp_details`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `rlp_info_id` (`rlp_info_id`);
+
+--
+-- Indexes for table `rlp_info`
+--
+ALTER TABLE `rlp_info`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `rlp_user_id` (`rlp_user_id`);
+
+--
+-- Indexes for table `rlp_remarks_history`
+--
+ALTER TABLE `rlp_remarks_history`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `rlp_info_id` (`rlp_info_id`);
+
+--
 -- Indexes for table `roles`
 --
 ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `roles_group`
+--
+ALTER TABLE `roles_group`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `status_details`
+--
+ALTER TABLE `status_details`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -2612,8 +3645,20 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `users2`
+--
+ALTER TABLE `users2`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `branch`
+--
+ALTER TABLE `branch`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `buildings`
@@ -2622,10 +3667,28 @@ ALTER TABLE `buildings`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `companies`
+--
+ALTER TABLE `companies`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
 -- AUTO_INCREMENT for table `complain_type`
 --
 ALTER TABLE `complain_type`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `department`
+--
+ALTER TABLE `department`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
+
+--
+-- AUTO_INCREMENT for table `designations`
+--
+ALTER TABLE `designations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=238;
 
 --
 -- AUTO_INCREMENT for table `equipments`
@@ -2679,13 +3742,13 @@ ALTER TABLE `inv_invoice_details`
 -- AUTO_INCREMENT for table `inv_issue`
 --
 ALTER TABLE `inv_issue`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `inv_issuedetail`
 --
 ALTER TABLE `inv_issuedetail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `inv_item_unit`
@@ -2709,13 +3772,13 @@ ALTER TABLE `inv_job_card_details`
 -- AUTO_INCREMENT for table `inv_material`
 --
 ALTER TABLE `inv_material`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `inv_materialbalance`
 --
 ALTER TABLE `inv_materialbalance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `inv_materialcategory`
@@ -2727,7 +3790,7 @@ ALTER TABLE `inv_materialcategory`
 -- AUTO_INCREMENT for table `inv_materialcategorysub`
 --
 ALTER TABLE `inv_materialcategorysub`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `inv_material_level3`
@@ -2745,7 +3808,7 @@ ALTER TABLE `inv_material_level4`
 -- AUTO_INCREMENT for table `inv_material_partno_detail`
 --
 ALTER TABLE `inv_material_partno_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `inv_particulars`
@@ -2763,7 +3826,7 @@ ALTER TABLE `inv_particulars_type`
 -- AUTO_INCREMENT for table `inv_product_price`
 --
 ALTER TABLE `inv_product_price`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `inv_purchase`
@@ -2781,13 +3844,13 @@ ALTER TABLE `inv_purchasedetail`
 -- AUTO_INCREMENT for table `inv_receive`
 --
 ALTER TABLE `inv_receive`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `inv_receivedetail`
 --
 ALTER TABLE `inv_receivedetail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `inv_return`
@@ -2817,7 +3880,7 @@ ALTER TABLE `inv_supplier`
 -- AUTO_INCREMENT for table `inv_supplierbalance`
 --
 ALTER TABLE `inv_supplierbalance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `inv_technicianinfo`
@@ -2868,6 +3931,18 @@ ALTER TABLE `materialbalance`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `notesheet_access_chain`
+--
+ALTER TABLE `notesheet_access_chain`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `notesheet_roles_group`
+--
+ALTER TABLE `notesheet_roles_group`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `packages`
 --
 ALTER TABLE `packages`
@@ -2886,16 +3961,70 @@ ALTER TABLE `permission_role`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=243;
 
 --
+-- AUTO_INCREMENT for table `priority_details`
+--
+ALTER TABLE `priority_details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT for table `rlp_access_chain`
+--
+ALTER TABLE `rlp_access_chain`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+
+--
+-- AUTO_INCREMENT for table `rlp_acknowledgement`
+--
+ALTER TABLE `rlp_acknowledgement`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1335;
+
+--
+-- AUTO_INCREMENT for table `rlp_delete_history`
+--
+ALTER TABLE `rlp_delete_history`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `rlp_details`
+--
+ALTER TABLE `rlp_details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1503;
+
+--
+-- AUTO_INCREMENT for table `rlp_info`
+--
+ALTER TABLE `rlp_info`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=389;
+
+--
+-- AUTO_INCREMENT for table `rlp_remarks_history`
+--
+ALTER TABLE `rlp_remarks_history`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=782;
 
 --
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `roles_group`
+--
+ALTER TABLE `roles_group`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `status_details`
+--
+ALTER TABLE `status_details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `sttable`
@@ -2937,12 +4066,18 @@ ALTER TABLE `tb_ledger`
 -- AUTO_INCREMENT for table `userlog`
 --
 ALTER TABLE `userlog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=237;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=251;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3378;
+
+--
+-- AUTO_INCREMENT for table `users2`
+--
+ALTER TABLE `users2`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 

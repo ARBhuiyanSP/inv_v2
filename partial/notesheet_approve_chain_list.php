@@ -31,18 +31,15 @@ if (isset($agencyData) && !empty($agencyData)) {
                         <td><?php echo (isset($adata->department_id) && !empty($adata->department_id) ? getDepartmentNameById($adata->department_id) : 'No data'); ?></td>
                         <td><?php echo (isset($adata->project_id) && !empty($adata->project_id) ? getProjectNameById($adata->project_id) : 'No data'); ?></td>
                         <td>
-                            <?php if(hasAccessPermission($user_id_session, 'crlp', 'edit_access')){ ?>
+                           
                             <a title="Edit User" class="btn btn-sm btn-info" href="notesheet_approve_chain_update.php?chain_id=<?php echo $adata->id; ?>">
                                 <span class="fa fa-pencil"></span>
                             </a>
-                            <?php } ?>
-                            <?php 
-                                if(hasAccessPermission($user_id_session, 'crlp', 'delete_access')){
-                            ?>
+                           
                             <a title="Delete User" class="btn btn-sm btn-danger" href="javascript:void(0)" onclick="commonDeleteOperation('<?php echo $delUrl ?>', '<?php echo $adata->id ?>');">
                                 <span class="fa fa-close"></span>
                             </a>
-                            <?php } ?>
+                            
                         </td>
                     </tr>
                 <?php } ?>

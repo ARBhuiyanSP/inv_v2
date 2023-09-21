@@ -290,7 +290,7 @@ function getRlpDetailsData($rlp_id){
     $order = 'asc';
     $column='id';
     $table         =   "rlp_details WHERE rlp_info_id=$rlp_id";
-    $rlp_details   = getTableDataByTableName($table, $order, $column);
+    $rlp_details   = getTableDataByTableNameRlp($table, $order, $column);
     
     $feedbackData   =   [
         'rlp_info'      =>  $rlp_info,

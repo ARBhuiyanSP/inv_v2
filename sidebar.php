@@ -230,6 +230,17 @@
         </div>
     </li>
     <?php } ?>
+	
+	
+	   <?php if(check_permission('material-issue-list')){ ?>
+    <li class="nav-item">
+            <a class="nav-link" href="rlp_list.php">
+                <i class="fa fa-key" aria-hidden="true" style="color: #007BFF;"></i>
+                <span>RLP</span></a>
+        </li>
+    <?php } ?>
+	
+	
 	<li class="nav-item" style="background-color:#007BFF;">
         <span class="nav-link" href="#">
             <i class="fa fa-bars" aria-hidden="true" style="color: #FFF;"></i>

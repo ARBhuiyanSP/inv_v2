@@ -7,7 +7,7 @@
         $table = "rlp_remarks_history WHERE rlp_info_id=$rlp_id";
         $order = 'DESC';
         $column = 'remarks_date';
-        $allRemarksHistory = getTableDataByTableName($table, $order, $column);
+        $allRemarksHistory = getTableDataByTableNameRlp($table, $order, $column);
         if (isset($allRemarksHistory) && !empty($allRemarksHistory)) {
             foreach ($allRemarksHistory as $dat) {
                 ?>
@@ -46,7 +46,7 @@
         $table = "rlp_acknowledgement WHERE rlp_info_id=$rlp_id";
         $order = 'DESC';
         $column = 'ack_request_date';
-        $allRemarksHistory = getTableDataByTableName($table, $order, $column);
+        $allRemarksHistory = getTableDataByTableNameRlp($table, $order, $column);
         if (isset($allRemarksHistory) && !empty($allRemarksHistory)) {
             foreach ($allRemarksHistory as $dat) {
                 ?>

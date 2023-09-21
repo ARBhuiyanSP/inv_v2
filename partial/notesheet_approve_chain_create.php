@@ -15,7 +15,7 @@
                                         $table = "branch";
                                         $order = "ASC";
                                         $column = "name";
-                                        $datas = getTableDataByTableName($table, $order, $column);
+                                        $datas = getTableDataByTableNameRlp($table, $order, $column);
                                         foreach ($datas as $data) {
                                             ?>
                                             <option value="<?php echo $data->id; ?>"><?php echo $data->name; ?></option>
@@ -30,7 +30,7 @@
                                         $table = "department";
                                         $order = "ASC";
                                         $column = "name";
-                                        $datas = getTableDataByTableName($table, $order, $column);
+                                        $datas = getTableDataByTableNameRlp($table, $order, $column);
                                         foreach ($datas as $data) {
                                             ?>
                                             <option value="<?php echo $data->id; ?>"><?php echo $data->name; ?></option>
@@ -45,7 +45,7 @@
                                         $table = "projects";
                                         $order = "ASC";
                                         $column = "project_name";
-                                        $datas = getTableDataByTableName($table, $order, $column);
+                                        $datas = getTableDataByTableNameRlp($table, $order, $column);
                                         foreach ($datas as $data) {
                                             ?>
                                             <option value="<?php echo $data->id; ?>"><?php echo $data->project_name; ?></option>
@@ -71,7 +71,7 @@
                                         $table = "branch";
                                         $order = "ASC";
                                         $column = "name";
-                                        $datas = getTableDataByTableName($table, $order, $column);
+                                        $datas = getTableDataByTableNameRlp($table, $order, $column);
                                         foreach ($datas as $data) {
                                             ?>
                                             <option value="<?php echo $data->id; ?>"><?php echo $data->name; ?></option>
@@ -88,7 +88,7 @@
                                         $table = "department";
                                         $order = "ASC";
                                         $column = "name";
-                                        $datas = getTableDataByTableName($table, $order, $column);
+                                        $datas = getTableDataByTableNameRlp($table, $order, $column);
                                         foreach ($datas as $data) {
                                             ?>
                                             <option value="<?php echo $data->id; ?>"><?php echo $data->name; ?></option>
@@ -105,7 +105,7 @@
                                         $table = "projects";
                                         $order = "ASC";
                                         $column = "project_name";
-                                        $datas = getTableDataByTableName($table, $order, $column);
+                                        $datas = getTableDataByTableNameRlp($table, $order, $column);
                                         foreach ($datas as $data) {
                                             ?>
                                             <option value="<?php echo $data->id; ?>"><?php echo $data->project_name; ?></option>

@@ -9,7 +9,6 @@ if (isset($rlpListData) && !empty($rlpListData)) {
                     <th>SLN#</th>
                     <th>RLP No</th>
                     <th>Request Date</th>
-                    <th width="25%">Request Purpose</th>
                     <th>Created By</th>
                     <th>Project</th>
                     <th>Status</th>
@@ -22,10 +21,7 @@ if (isset($rlpListData) && !empty($rlpListData)) {
                 $delUrl =   "function/rlp_process.php?process_type=rlp_delete";
                 //$approve_url =   "function/rlp_process.php?process_type=rlp_approve";
                 $role       =   get_role_group_short_name();
-                if(is_super_admin($currentUserId)){
-                    //include 'rrr_update_view_sa.php';
-                    $approve_url =   "function/rlp_process.php?process_type=rlp_dh_common_update_execute";
-                }elseif($role    ==  "member"){
+                if($role    ==  "member"){
                     //include 'rrr_update_view_member.php';
                     $approve_url =   "function/rlp_process.php?process_type=rlp_dh_common_update_execute";
                 }elseif($role    ==  "dh"){
@@ -50,16 +46,6 @@ if (isset($rlpListData) && !empty($rlpListData)) {
                             </div>
                         </td>
                         <td><?php echo (isset($adata->request_date) && !empty($adata->request_date) ? human_format_date($adata->created_at) : 'No data'); ?></td>
-                        <td>
-                            <?php
-                                $rlp_id         =   $adata->id;    
-                                $rlp_details    =   getRlpDetailsData($rlp_id);   
-                                $rlp_info       =   $rlp_details['rlp_info'];
-                                $rlp_details    =   $rlp_details['rlp_details'];
-                                    foreach($rlp_details as $data){
-                                        echo $data->purpose.',';
-                             } ?>
-                        </td>
                         <td><?php echo (isset($adata->rlp_user_id) && !empty($adata->rlp_user_id) ? getUserNameByUserId($adata->rlp_user_id) : 'No data'); ?></td>
                         <td><?php echo (isset($adata->request_project) && !empty($adata->request_project) ? getProjectNameById($adata->request_project) : 'No data'); ?></td>
                        
@@ -69,29 +55,19 @@ if (isset($rlpListData) && !empty($rlpListData)) {
                             </div>
                         </td>
                         <td>
-                            <?php //if(hasAccessPermission($user_id_session, 'crlp', 'edit_access') && get_status_name($adata->rlp_status)!='Approve'){ ?>
+                            
                             <a title="Edit RLP" class="btn btn-sm btn-info" href="rlp_update.php?rlp_id=<?php echo $adata->id; ?>">
                                 <span class="fa fa-eye"> Details</span>
                             </a>
-                            <?php //} ?>
                             
-                            <?php// if (!is_super_admin($user_id_session)) {?>
-                            <?php //if(hasAccessPermission($user_id_session, 'crlp', 'edit_access') && get_status_name($adata->rlp_status)!='Approve'){ ?>
 							<?php if(check_permission('rlp-approve') && get_status_name($adata->rlp_status)!='Approve'){ ?>
                             <a title="Delete RLP" class="btn btn-sm btn-success" href="javascript:void(0)" onclick="commonApproveOperation('<?php echo $approve_url ?>', '<?php echo $adata->id ?>', '<?php echo $_SESSION['logged']['user_id'] ?>');">
                                 <span class="fa fa-check"> Approve</span>
                             </a>
 							<?php } ?>
-                            <?php //}} ?> 
+                           
                             
-                            <!---  <?php if(hasAccessPermission($user_id_session, 'crlp', 'delete_access')){ ?>
-                            <a title="Delete RLP" class="btn btn-sm btn-danger" href="javascript:void(0)" onclick="commonDeleteOperation('<?php echo $delUrl ?>', '<?php echo $adata->id ?>');">
-                                <span class="fa fa-close"> Delete</span>
-                            </a>
-                            <?php } ?>   --->
-                            
-                            
-                            <?php if(hasAccessPermission($user_id_session, 'crlp', 'delete_access') && get_status_name($adata->rlp_status)=='Approve' && $adata->is_ns==0){ ?>
+                            <?php if(get_status_name($adata->rlp_status)=='Approve' && $adata->is_ns==0){ ?>
                             <a title="Make Notesheet" class="btn btn-sm btn-info" href="rlp_notesheet.php?rlp_id=<?php echo $adata->id; ?>">
                                 <span class="fa fa-sticky-note-o"> Notesheet</span>
                             </a>
@@ -103,11 +79,11 @@ if (isset($rlpListData) && !empty($rlpListData)) {
                             </a>
                             <?php //} ?>  
 
-                            <?php if(hasAccessPermission($user_id_session, 'crlp', 'edit_access')){ ?>
+                            
                             <a title="Print RLP" class="btn btn-sm btn-info bg-blue" href="rlp_print.php?rlp_id=<?php echo $adata->id; ?>">
                                 <span class="fa fa-print"> Print</span>
                             </a>
-                            <?php } ?>                          
+                                                    
                         </td>
                     </tr>
                 <?php } ?>

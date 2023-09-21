@@ -18,7 +18,7 @@ include 'header.php';
     <div class="card mb-3">
         <div class="card-header">
             <i class="fas fa-table"></i> Notesheet Approval Chain Ctreate
-			<a href="rlp_approve_chain_create.php" style="float:right"><i class="fas fa-list"></i> Create New<a>
+			<a href="notesheet_approve_chain_list.php" style="float:right"><i class="fas fa-list"></i> List<a>
 		</div>
         <div class="card-body">
                     <!-- form start -->

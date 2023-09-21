@@ -24,6 +24,9 @@ include 'includes/payment_process.php';
 include 'includes/equipment_process.php';
 include 'function/rlp_process.php';
 include 'function/rlp_chain_process.php';
+include 'function/notesheet_processing.php';
+include 'function/notesheet_chain_process.php';
+include 'function/user_management.php';
 include 'includes/user_process.php';
 ?>
 <!DOCTYPE html>

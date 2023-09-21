@@ -49,6 +49,7 @@ if (isset($_POST['login_submit']) && !empty($_POST['login_submit'])) {
                 $_SESSION['logged']['user_id']      =   $user_id;
                 $_SESSION['logged']['user_type']	=   $user_type;
                 $_SESSION['logged']['role_id']    =   $role_id;
+				$_SESSION['logged']['branch_id']    =   (isset($row->branch_id) && !empty($row->branch_id) ? $row->branch_id : "");
                 $_SESSION['logged']['project_id']	=   $project_id;
                 $_SESSION['logged']['warehouse_id']	=   $warehouse_id;
 
