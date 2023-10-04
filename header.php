@@ -89,8 +89,122 @@ include 'includes/user_process.php';
       <i class="fas fa-bars"></i>
     </button>
 
-
-<div class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" style="color: white;"><?php echo $_SESSION['logged']['user_name']; ?>-[<?php echo $_SESSION['logged']['user_name']; ?>]</div>
+	<!-- Menu -->
+    <ul class="navbar-nav ml-auto ml-md-0">
+	  <li class="nav-item dropdown no-arrow">
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-user-circle fa-fw"></i> Master Setup
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+            <?php if(check_permission('category-list')){ ?>
+                    <a class="dropdown-item" href="category.php">
+                <i class="fa fa-bullseye" aria-hidden="true" style="color: #007BFF;"></i>
+                <span class="sub_menu_text_design"> Material Category</span>
+            </a>
+             <?php    } ?>
+            
+			
+			<?php
+            
+                if(check_permission('material-list')){ ?>
+                    <a class="dropdown-item" href="material.php">
+                <i class="fa fa-bullseye" aria-hidden="true" style="color: #007BFF;"></i>
+                <span class="sub_menu_text_design"> Material</span>
+            </a>
+             <?php    } ?>
+			 
+             <?php
+            
+                if(check_permission('unit-list')){ ?>
+                    <a class="dropdown-item" href="unit_entry.php">
+                <i class="fa fa-bullseye" aria-hidden="true" style="color: #007BFF;"></i>
+                <span class="sub_menu_text_design"> UOM</span>
+            </a>
+             <?php    } ?>
+			
+        <?php
+            
+                if(check_permission('project-list')){ ?>
+                    <a class="dropdown-item" href="project_entry.php">
+                <i class="fa fa-bullseye" aria-hidden="true" style="color: #007BFF;"></i>
+                <span class="sub_menu_text_design"> Projects</span>
+            </a>
+             <?php    } ?>
+            
+            <?php
+            
+                if(check_permission('warehouse-list')){ ?>
+                    <a class="dropdown-item" href="warehouse_entry.php">
+                <i class="fa fa-bullseye" aria-hidden="true" style="color: #007BFF;"></i>
+                <span class="sub_menu_text_design"> Warehouse</span>
+            </a>
+             <?php    } ?>
+           
+        
+            <?php
+            
+                if(check_permission('equipment-list')){ ?>
+                    <a class="dropdown-item" href="equipment_entry.php">
+                <i class="fa fa-bullseye" aria-hidden="true" style="color: #007BFF;"></i>
+                <span class="sub_menu_text_design"> Euipments</span>
+            </a>
+             <?php    } ?>
+			 
+			 
+			   <?php
+            
+                if(check_permission('role-list')){ ?>
+                    <a class="dropdown-item" href="role-list.php">
+                <i class="fa fa-bullseye" aria-hidden="true" style="color: #007BFF;"></i>
+                <span class="sub_menu_text_design"> Role</span>
+            </a>
+             <?php    } ?>
+			 
+			 
+            <?php
+            
+                if(check_permission('role-list')){ ?>
+                    <a class="dropdown-item" href="rlp_approve_chain_list.php">
+                <i class="fa fa-bullseye" aria-hidden="true" style="color: #007BFF;"></i>
+                <span class="sub_menu_text_design"> RLP Approval Chain</span>
+            </a>
+             <?php    } ?>
+			 
+			  
+            <?php
+            
+                if(check_permission('role-list')){ ?>
+                    <a class="dropdown-item" href="notesheet_approve_chain_list.php">
+                <i class="fa fa-bullseye" aria-hidden="true" style="color: #007BFF;"></i>
+                <span class="sub_menu_text_design"> Notesheet Approval Chain</span>
+            </a>
+             <?php    } ?>
+		   
+          <!--<a class="dropdown-item" href="#">Settings</a>-->
+          <!--<a class="dropdown-item" href="#">Activity Log</a>-->
+        </div>
+      </li>
+	  <li class="nav-item dropdown no-arrow">
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-user-circle fa-fw"></i> Settings
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+               <?php if(check_permission('user-list')){ ?>
+				
+					<a class="nav-link" href="user-list.php">
+						<i class="fa fa-users" aria-hidden="true" style="color: #000;"></i>
+						<span style="color: #000;">Users</span></a>
+				
+			<?php } ?>
+		   
+          <!--<a class="dropdown-item" href="#">Settings</a>-->
+          <!--<a class="dropdown-item" href="#">Activity Log</a>-->
+        </div>
+      </li>
+    </ul>
+	
+	
+	<div class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" style="color: white;"><?php echo $_SESSION['logged']['user_name']; ?>-[<?php echo $_SESSION['logged']['user_name']; ?>]</div>
 
     <!-- Navbar -->
     <ul class="navbar-nav ml-auto ml-md-0">
