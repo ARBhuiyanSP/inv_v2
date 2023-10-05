@@ -302,7 +302,7 @@ function generateTreeMenuHtmlCollapse($items) {
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header modal_header_custom_background">
-                    <h4 class="modal-title">Category add</h4>
+                    <h4 class="modal-title">Category Update</h4>
                 </div>
                 <div class="modal-body modal_body_custom_background">
                     <div class="modal_body_centerize">

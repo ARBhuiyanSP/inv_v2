@@ -810,7 +810,7 @@ if(isset($_GET['process_type']) && $_GET['process_type'] == 'parent_material_edi
             <div class="col-sm-7">
                 <select id="parent_id" class="form-control "
                       name="parent_id" required >
-                    <option value="0">Parent Category</option>
+						<option value="0">Parent Category</option>
                         <?php
                         $category_resize_data = category_tree();
                         $html = '';
@@ -837,14 +837,14 @@ if(isset($_GET['process_type']) && $_GET['process_type'] == 'parent_material_edi
             </div>
         </div> </br>
 
-        <div class="form-group">
+        <div class="form-group mt-3">
             <input type="hidden" name="parent_material_update_id" value="<?php echo $editData->id; ?>">
             <label class="control-label col-sm-5" for="category_id">Category Id:</label>
             <div class="col-sm-7">
                 <input type="text" class="form-control" id="edit_category_id" placeholder="Enter Category Id" name="category_id" value="<?php if(isset($editData->category_id)){ echo $editData->category_id; } ?>">
             </div>
         </div> </br>
-        <div class="form-group">
+        <div class="form-group mt-3">
             <label class="control-label col-sm-5" for="name">Name:</label>
             <div class="col-sm-7">
                 <input type="text" class="form-control" id="edit_parent_name" placeholder="name" name="name" value="<?php if(isset($editData->category_description)){ echo $editData->category_description; } ?>">

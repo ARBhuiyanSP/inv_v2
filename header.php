@@ -81,19 +81,19 @@ include 'includes/user_process.php';
 .table th, .table td {
   padding:3px !important;
 }
+.navbar{
+	padding : 0px 15px;
+}
 </style>
 <body id="page-top">
-  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+  <nav class="navbar navbar-expand navbar-dark bg-dark fixed-top">
     <a class="navbar-brand mr-1" href="index.php"><img src="images/logo-wide.png" height="30px;"/></a>
-    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-      <i class="fas fa-bars"></i>
-    </button>
 
 	<!-- Menu -->
     <ul class="navbar-nav ml-auto ml-md-0">
 	  <li class="nav-item dropdown no-arrow">
         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-user-circle fa-fw"></i> Master Setup
+          <i class="fas fa-fw fa-cog"></i> Master Setup
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
             <?php if(check_permission('category-list')){ ?>
@@ -186,7 +186,7 @@ include 'includes/user_process.php';
       </li>
 	  <li class="nav-item dropdown no-arrow">
         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-user-circle fa-fw"></i> Settings
+          <i class="fas fa-fw fa-tachometer-alt"></i> Settings
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                <?php if(check_permission('user-list')){ ?>
@@ -196,11 +196,77 @@ include 'includes/user_process.php';
 						<span style="color: #000;">Users</span></a>
 				
 			<?php } ?>
+			
+			<?php if(check_permission('data-backup')){ ?>
+				
+					<a class="nav-link" href="data_backup.php" style="color: #000;">
+						<i class="fa fa-database" aria-hidden="true" style=""></i>
+						<span>Data Backup</span></a>
+				
+			<?php } ?>
+
+			<?php if(check_permission('log-history')){ ?>
+				
+					<a class="nav-link" href="log-history.php" style="color: #000;">
+						<i class="fa fa-key" aria-hidden="true" style=""></i>
+						<span>Log History</span></a>
+				
+			<?php } ?>
+			 
+			<?php if(check_permission('opening-stock-list')){ ?>
+				
+					<a class="nav-link" href="opening_balance.php" style="color: #000;">
+						<i class="fa fa-key" aria-hidden="true" style=""></i>
+						<span>OP Entry</span></a>
+				
+			<?php } ?>
 		   
           <!--<a class="dropdown-item" href="#">Settings</a>-->
           <!--<a class="dropdown-item" href="#">Activity Log</a>-->
         </div>
       </li>
+	  <li class="nav-item dropdown no-arrow">
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-truck"></i> Receive
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+               <?php if(check_permission('material-receive-add')){ ?>
+			<a class="dropdown-item" href="receive_entry.php"><i class="fa fa-plus" aria-hidden="true" style="color: #007BFF;"></i><span class="sub_menu_text_design">Receive Entry</span></a>
+			<?php } ?>
+			<a class="dropdown-item" href="receive-list.php"><i class="fa fa-list" aria-hidden="true" style="color: #007BFF;"></i><span class="sub_menu_text_design">Receive List</span></a>
+		   
+          <!--<a class="dropdown-item" href="#">Settings</a>-->
+          <!--<a class="dropdown-item" href="#">Activity Log</a>-->
+        </div>
+      </li>
+	  <li class="nav-item dropdown no-arrow">
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-server"></i> issue
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+               <?php if(check_permission('material-receive-add')){ ?>
+			<a class="dropdown-item" href="issue_entry.php"><i class="fa fa-plus" aria-hidden="true" style="color: #007BFF;"></i><span class="sub_menu_text_design">Material issue</span></a>
+			<?php } ?>
+			<a class="dropdown-item" href="issue-list.php"><i class="fa fa-list" aria-hidden="true" style="color: #007BFF;"></i><span class="sub_menu_text_design">Issue List</span></a>
+		   
+          <!--<a class="dropdown-item" href="#">Settings</a>-->
+          <!--<a class="dropdown-item" href="#">Activity Log</a>-->
+        </div>
+      </li>
+	  <li class="nav-item dropdown no-arrow">
+        <?php if(check_permission('material-issue-list')){ ?>
+		<a class="nav-link" href="rlp_list.php" id="userDropdown">
+          <i class="fa fa-key"></i> RLP
+        </a>
+		<?php } ?>
+		</li>
+	  <li class="nav-item dropdown no-arrow">
+        
+		<a class="nav-link" href="#" id="userDropdown">
+          <i class="fas fa-user-circle fa-fw"></i> Reports
+        </a>
+		
+		</li>
     </ul>
 	
 	
@@ -220,13 +286,12 @@ include 'includes/user_process.php';
         </div>
       </li>
     </ul>
-
   </nav>
 
-  <div id="wrapper">
+  <div id="wrapper" style="padding-top:30px;">
 
     <!-- Sidebar -->
-    <?php include 'sidebar.php' ?>
+    <?php //include 'sidebar.php' ?>
 
     <div id="content-wrapper" style="">    
         <!-- Sidebar -->

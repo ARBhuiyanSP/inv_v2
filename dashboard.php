@@ -85,7 +85,7 @@ $(document).ready(function() {
 		
         <div class="row">
           <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-primary o-hidden h-100">
+            <div class="card text-white bg-success o-hidden h-100">
               <div class="card-body">
                 <div class="card-body-icon">
                   <i class="fas fa-fw fa-comments"></i>
@@ -106,7 +106,7 @@ $(document).ready(function() {
             </div>
           </div>
           <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-primary o-hidden h-100">
+            <div class="card text-white bg-success o-hidden h-100">
               <div class="card-body">
                 <div class="card-body-icon">
                   <i class="fas fa-fw fa-comments"></i>
@@ -127,7 +127,7 @@ $(document).ready(function() {
             </div>
           </div>
           <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-primary o-hidden h-100">
+            <div class="card text-white bg-success o-hidden h-100">
               <div class="card-body">
                 <div class="card-body-icon">
                   <i class="fas fa-fw fa-comments"></i>
@@ -148,7 +148,7 @@ $(document).ready(function() {
             </div>
           </div>
           <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-primary o-hidden h-100">
+            <div class="card text-white bg-success o-hidden h-100">
               <div class="card-body">
                 <div class="card-body-icon">
                   <i class="fas fa-fw fa-comments"></i>
@@ -201,7 +201,7 @@ $(document).ready(function() {
 		<div class="row">
 			<div class="col-xl-6 col-sm-6 mb-3">
 
-            <div class="card bg-primary o-hidden h-100">
+            <div class="card bg-success o-hidden h-100">
               <div class="card">
 							<form name="" action="" method="GET">
 								<div class="col-md-12">
@@ -254,7 +254,7 @@ $(document).ready(function() {
 			
           <div class="col-xl-3 col-sm-3 mb-3">
 
-            <div class="card text-white bg-primary o-hidden h-100">
+            <div class="card text-white bg-success o-hidden h-100">
 				<div class="card-body">
 					<div class="card-body-icon">
 						<i class="fas fa-fw fa-truck"></i>
@@ -276,7 +276,7 @@ $(document).ready(function() {
             </div>
           </div>
           <div class="col-xl-3 col-sm-3 mb-3">
-            <div class="card text-white bg-primary o-hidden h-100">
+            <div class="card text-white bg-success o-hidden h-100">
 				<div class="card-body">
 					<div class="card-body-icon">
 						<i class="fas fa-fw fa-truck"></i>
