@@ -1,6 +1,5 @@
 <?php include 'header.php' ?>
 
-<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 <style type="text/css">
 .ui-widget-content {
@@ -67,6 +66,8 @@
         margin-top: 30px !important;
     }
 </style>
+
+<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 <?php
 
 
@@ -169,16 +170,11 @@ function generateTreeMenuHtmlCollapse($items) {
             </div>
    </div>
    <div class="col-md-6">
-       <div class="card mb-3">
-        <div class="card-header">
-            <i class="fas fa-table"></i>
-            Material category <a class="btn btn-sm btn-info" href="category.php">Refresh</a></div>
-        <div class="card-body">
             <div class="div-center">
                     <div class='row'>
                         <div class='col-md-12'>
-                            <div class="table-responsive data-table-wrapper">
-                                <table id="example2" class="table table-condensed table-hover table-bordered site_custome_table">
+							<div class="table-responsive data-table-wrapper">
+                                <table id="example1" class="table table-condensed table-hover table-bordered site_custome_table">
                                     <thead>
                                         <tr>
                                             <th>Code</th>
@@ -220,13 +216,33 @@ function generateTreeMenuHtmlCollapse($items) {
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+         
    </div>
  </div>
     <!-- DataTables Example -->
     
 </div>
+
+<script>
+$(document).ready(function() {
+    $('#example').DataTable();
+} );
+
+$(document).ready(function() {
+    $('#example1').DataTable();
+} );
+$(document).ready(function() {
+    $('#example2').DataTable();
+} );
+$(document).ready(function() {
+    $('#example3').DataTable();
+} );
+$(document).ready(function() {
+    $('#example4').DataTable();
+} );
+</script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
 <div class="modal fade" id="tree_category_modal" role="dialog">
     <form id="parent_item_added_form_value">
         <div class="modal-dialog">
@@ -328,16 +344,16 @@ $(document).ready(function() {
 $(document).ready(function() {
     $('#example1').DataTable();
 } );
-
+$(document).ready(function() {
+    $('#example2').DataTable();
+} );
+$(document).ready(function() {
+    $('#example3').DataTable();
+} );
 $(document).ready(function() {
     $('#example4').DataTable();
 } );
-
-$(document).on("click",".sa-confirm-button-container",function(){
-    location.reload();
-})
 </script>
-
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
 
