@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 21, 2023 at 01:04 PM
+-- Generation Time: Oct 12, 2023 at 08:50 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -1218,12 +1218,16 @@ CREATE TABLE `inv_materialcategorysub` (
 
 INSERT INTO `inv_materialcategorysub` (`id`, `category_id`, `parent_id`, `_order`, `category_description`, `stock_acct_id`, `chk_sbalance`, `consumption_ac`, `same_level`, `has_child`) VALUES
 (1, '01-00', 0, 1, 'RST', NULL, NULL, NULL, 0, 1),
-(2, '02-00', 1, 2, 'KALMAR', NULL, NULL, NULL, 0, 0),
+(2, '02-00', 1, 2, 'KALMAR', NULL, NULL, NULL, 0, 1),
 (3, '03-00', 1, 3, 'LIEBHERR', NULL, NULL, NULL, 0, 1),
 (19, '04-00', 3, 4, 'rtr', NULL, NULL, NULL, 0, 0),
 (20, '05-00', 0, 6, 'ghjgg', NULL, NULL, NULL, 0, 0),
-(21, '06-00', 0, 7, 'dfsdfsd', NULL, NULL, NULL, 0, 0),
-(22, '07-00', 0, 8, 'hjhj', NULL, NULL, NULL, 0, 0);
+(21, '06-00', 0, 7, 'dfsdfsd', NULL, NULL, NULL, 0, 1),
+(22, '07-00', 0, 8, 'hjhj', NULL, NULL, NULL, 0, 0),
+(23, '08-00', 21, 0, 'okokok', NULL, NULL, NULL, 0, 0),
+(24, '09-00', 0, 5, 'fgfg', NULL, NULL, NULL, 0, 0),
+(25, '10-00', 0, 5, 'sfgf', NULL, NULL, NULL, 0, 0),
+(26, '11-00', 2, 6, 'fgfg', NULL, NULL, NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -2308,14 +2312,12 @@ CREATE TABLE `product_movement_details` (
 CREATE TABLE `projects` (
   `id` int(11) NOT NULL,
   `code` varchar(200) DEFAULT NULL,
-  `company_id` int(11) NOT NULL,
-  `division_id` int(11) NOT NULL,
-  `department_id` int(11) NOT NULL,
-  `project_name` varchar(500) NOT NULL,
+  `name` varchar(500) NOT NULL,
+  `incharge` varchar(100) NOT NULL,
   `address` text DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
@@ -2324,27 +2326,8 @@ CREATE TABLE `projects` (
 -- Dumping data for table `projects`
 --
 
-INSERT INTO `projects` (`id`, `code`, `company_id`, `division_id`, `department_id`, `project_name`, `address`, `created_by`, `updated_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'P-001', 7, 5, 40, 'Payra Project', '72, Mohakhali C/A, (8th Floor), Rupayan Center, Dhaka-1212, Bangladesh.\r\nTel. : (88-02) 9825705, 9891562, 9891597, 9856358-9,\r\n9857902, 9852454, 9854423,\r\nFax: (88-02) 9855949, \r\nWeb:www.saifpowertecltd.com', 1, NULL, '2019-02-10 08:09:28', '2019-04-09 03:46:55', NULL),
-(3, 'P-003', 0, 0, 0, 'PCT,Ctg', '72, Mohakhali C/A, (8th Floor), Rupayan Center, Dhaka-1212, Bangladesh.\r\nTel. : (88-02) 9825705, 9891562, 9891597, 9856358-9,\r\n9857902, 9852454, 9854423,\r\nFax: (88-02) 9855949, \r\nWeb:www.saifpowertecltd.com', 1, NULL, '2019-02-10 09:05:36', '2019-05-12 13:09:34', NULL),
-(4, '04', 0, 0, 0, 'NCT,Ctg', '', 5, NULL, '2019-05-12 13:14:45', '2019-05-12 13:14:45', NULL),
-(5, '03', 0, 0, 0, 'Bhashanchor', 'test', 5, NULL, '2019-05-14 07:54:29', '2019-05-14 07:54:29', NULL),
-(6, '04', 0, 0, 0, 'Karnophuli', NULL, 5, NULL, '2019-05-14 07:55:39', '2019-05-14 07:55:39', NULL),
-(7, '05', 0, 0, 0, 'Payra Port', NULL, 5, NULL, '2019-05-14 07:56:11', '2019-05-14 07:56:11', NULL),
-(9, '07', 0, 0, 0, 'Shirajgonj', NULL, 5, NULL, '2019-05-14 08:03:14', '2019-05-14 08:03:14', NULL),
-(10, '08', 0, 0, 0, 'Raozan Road', NULL, 5, NULL, '2019-05-14 08:05:55', '2019-05-14 08:05:55', NULL),
-(11, '10', 0, 0, 0, 'Mongla Port Project', NULL, 5, NULL, '2019-05-25 17:38:21', '2019-05-25 17:38:21', NULL),
-(12, NULL, 0, 0, 0, 'CWLP', NULL, NULL, NULL, NULL, NULL, NULL),
-(14, NULL, 0, 0, 0, 'MPA', NULL, NULL, NULL, NULL, NULL, NULL),
-(15, NULL, 0, 0, 0, 'Gohira', NULL, NULL, NULL, NULL, NULL, NULL),
-(16, NULL, 0, 0, 0, 'MCC', NULL, NULL, NULL, NULL, NULL, NULL),
-(17, NULL, 0, 0, 0, 'Pubail', NULL, NULL, NULL, NULL, NULL, NULL),
-(18, NULL, 0, 0, 0, 'Maxon Power', NULL, NULL, NULL, NULL, NULL, NULL),
-(19, NULL, 0, 0, 0, 'Dredging', NULL, NULL, NULL, NULL, NULL, NULL),
-(20, NULL, 0, 0, 0, 'Netrokonah', NULL, NULL, NULL, NULL, NULL, NULL),
-(21, 'P-000', 19, 16, 131, 'Head Office', 'Khawaja Tower[13th Floor], 95 Bir Uttam A.K Khandokar Road, Mohakhali C/A, Dhaka-1212, Bangladesh', NULL, NULL, NULL, NULL, NULL),
-(22, '', 0, 0, 0, 'Mymensingh city corporation', 'Mymensingh ', NULL, NULL, NULL, NULL, NULL),
-(23, NULL, 0, 0, 0, 'Rental Site', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `projects` (`id`, `code`, `name`, `incharge`, `address`, `created_by`, `updated_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'PR-001', 'CTED, Chattogram', 'Lt Commander M Tafsir Uddin Ahmed(Retd)', 'Chattogram Port, Chattogram', NULL, NULL, '2020-12-14 04:48:32', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -3126,7 +3109,17 @@ INSERT INTO `userlog` (`id`, `userId`, `username`, `role_id`, `employee_id`, `us
 (247, 1, '88i Admin', 14, '', 0x3a3a31, '2023-09-21 05:00:11'),
 (248, 1, '88i Admin', 14, '', 0x3a3a31, '2023-09-21 08:32:10'),
 (249, 1, '88i Admin', 14, '', 0x3a3a31, '2023-09-21 10:10:11'),
-(250, 3374, ' ', 3, '', 0x3a3a31, '2023-09-21 11:03:33');
+(250, 3374, ' ', 3, '', 0x3a3a31, '2023-09-21 11:03:33'),
+(251, 1, '88i Admin', 14, '', 0x3a3a31, '2023-09-21 11:06:29'),
+(252, 1, '88i Admin', 14, '', 0x3a3a31, '2023-09-24 04:10:45'),
+(253, 1, '88i Admin', 14, '', 0x3a3a31, '2023-09-24 08:59:17'),
+(254, 1, '88i Admin', 14, '', 0x3a3a31, '2023-09-26 03:33:08'),
+(255, 1, '88i Admin', 14, '', 0x3a3a31, '2023-10-01 06:08:37'),
+(256, 1, '88i Admin', 14, '', 0x3a3a31, '2023-10-01 06:25:22'),
+(257, 1, '88i Admin', 14, '', 0x3a3a31, '2023-10-01 10:50:01'),
+(258, 1, '88i Admin', 14, '', 0x3a3a31, '2023-10-04 11:27:49'),
+(259, 1, '88i Admin', 14, '', 0x3a3a31, '2023-10-05 03:36:46'),
+(260, 1, '88i Admin', 14, '', 0x3a3a31, '2023-10-12 06:09:51');
 
 -- --------------------------------------------------------
 
@@ -3790,7 +3783,7 @@ ALTER TABLE `inv_materialcategory`
 -- AUTO_INCREMENT for table `inv_materialcategorysub`
 --
 ALTER TABLE `inv_materialcategorysub`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `inv_material_level3`
@@ -3970,7 +3963,7 @@ ALTER TABLE `priority_details`
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `rlp_access_chain`
@@ -4066,7 +4059,7 @@ ALTER TABLE `tb_ledger`
 -- AUTO_INCREMENT for table `userlog`
 --
 ALTER TABLE `userlog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=251;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=261;
 
 --
 -- AUTO_INCREMENT for table `users`
