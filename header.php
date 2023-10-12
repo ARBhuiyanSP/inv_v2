@@ -262,7 +262,7 @@ include 'includes/user_process.php';
 		</li>
 	  <li class="nav-item dropdown no-arrow">
         
-		<a class="nav-link" href="#" id="userDropdown">
+		<a class="nav-link" href="reports.php" id="userDropdown">
           <i class="fas fa-user-circle fa-fw"></i> Reports
         </a>
 		
