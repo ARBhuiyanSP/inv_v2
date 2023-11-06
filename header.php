@@ -86,7 +86,7 @@ include 'includes/user_process.php';
 }
 </style>
 <body id="page-top">
-  <nav class="navbar navbar-expand navbar-dark bg-dark fixed-top">
+  <nav class="navbar navbar-expand navbar-light bg-light fixed-top">
     <a class="navbar-brand mr-1" href="index.php"><img src="images/logo-wide.png" height="30px;"/></a>
 
 	<!-- Menu -->
