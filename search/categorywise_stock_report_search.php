@@ -7,6 +7,9 @@
 }
 
 </style>
+<?php 
+error_reporting(E_ERROR | E_PARSE);
+?>
 <div class="card mb-3">
     <div class="card-header">
 		<button class="btn btn-info linktext" onclick="window.location.href='stock_report.php';"> Stock Report Search</button>

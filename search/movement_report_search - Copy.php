@@ -60,7 +60,7 @@ if(isset($_GET['submit'])){
 				<table id="htmltable" class="table table-bordered table-striped ">
 					<thead>
 						<tr>
-							<th colspan="9">
+							<th colspan="8">
 								<center>
 										<img src="images/Saif_Engineering_Logo_165X72.png" height="50px;"/><br>
 										<h5>CTED CHATTOGRAM</h5>
@@ -70,15 +70,15 @@ if(isset($_GET['submit'])){
 							</th>
 						</tr>
 						<tr>
-							<th width="">Material ID</th>
-							<th width="">Material Name</th>
-							<th width="">Part No</th>
-							<th width="">Specification</th>
+							<th width="30%">Material ID</th>
+							<th width="30%">Material Name</th>
+							<th width="15%">Part No</th>
+							<th width="15%">Specification</th>
 							<th>Unit</th>
-							<th width="">Opening Stock</th>
+							<th width="10%">Opening Stock</th>
 							<th style="text-align:right;">Receive</th>
 							<th style="text-align:right;">Issue</th>
-							<th width="" style="text-align:right;">Closing Stock</th>
+							<th width="15%" style="text-align:right;">Closing Stock</th>
 						</tr>
 					</thead>
 					<tbody>

@@ -7,6 +7,9 @@
 }
 
 </style>
+<?php 
+error_reporting(E_ERROR | E_PARSE);
+?>
 <div class="card mb-3">
     <div class="card-header">
 		<button class="btn btn-info linktext" onclick="window.location.href='stock_report.php';"> Stock Report Search</button>
@@ -26,20 +29,21 @@
 				<div class="form-group">
 					<label for="id">Parent Category</label><span class="reqfield"> ***required</span>
 					<select class="form-control material_select_2" id="level_1_id_l5" name="parent_item_id" onchange="getMatByParent(this.value);">
-						<option value="">Select</option>
+						<option value="0">Parent Category</option>
 						<?php
-						$parentCats = getTableDataByTableName('inv_materialcategorysub', '', 'category_description');
-						if (isset($parentCats) && !empty($parentCats)) {
-							foreach ($parentCats as $pcat) {
-								/* if($_GET['parent_item_id'] == $pcat['id']){
-								$selected	= 'selected';
-								}else{
-								$selected	= '';
-								} */
-								?>
-								<option value="<?php echo $pcat['id'] ?>" <?php //echo $selected; ?>><?php echo $pcat['category_description'] ?></option>
-							<?php }
-						} ?>
+						$category_resize_data = category_tree();
+						$html = '';
+						function generateOptions($category_resize_data, $indent = 0) {
+							foreach ($category_resize_data as $key => $value) {
+								echo '<option value="' . $value['id'] . '">' . str_repeat('-', $indent * 1) . $value['id'].'-' .$value['category_description']. '</option>';
+								if (is_array($value['children']) && !empty($value['children'])) {
+									generateOptions($value['children'], $indent + 1);
+								}
+							}
+						}
+						
+						generateOptions($category_resize_data);
+						?>
 					</select>
 				</div>
 			</div>

@@ -851,11 +851,11 @@ if(isset($_GET['process_type']) && $_GET['process_type'] == 'parent_material_edi
             </div>
         </div></br>
         <div class="form-group mt-3">
-                            <label class="control-label col-sm-5" for="_order">Order:</label>
-                            <div class="col-sm-7">
-                                <input type="text" class="form-control" id="_order" placeholder="Order" name="_order" value="<?php if(isset($editData->_order)){ echo $editData->_order; } ?>">
-                            </div>
-                        </div>
+			<label class="control-label col-sm-5" for="_order">Order:</label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" id="_order" placeholder="Order" name="_order" value="<?php if(isset($editData->_order)){ echo $editData->_order; } ?>">
+			</div>
+		</div>
 <?php }
 if(isset($_GET['process_type']) && $_GET['process_type'] == 'get_parent_category'){
     include '../connection/connect.php';
